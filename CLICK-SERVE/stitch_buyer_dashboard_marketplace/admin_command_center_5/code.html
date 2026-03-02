@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Buyer Credit Application | Skywhale Click &amp; Serve</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#137fec",
+                "brand-yellow": "#FFD700",
+                "background-light": "#f8fafc",
+                "background-dark": "#0f172a",
+              },
+              fontFamily: {
+                "sans": ["Montserrat", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.375rem", "lg": "0.5rem", "xl": "1rem", "2xl": "1.5rem", "3xl": "2rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Montserrat', sans-serif; }
+        .step-indicator.active { @apply text-primary border-primary; }
+        .step-indicator.completed { @apply text-green-500 border-green-500; }
+        .form-input { @apply w-full rounded-xl border-slate-200 focus:border-primary focus:ring-primary py-3; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .sidebar-link { @apply flex items-center gap-3 px-4 py-3 rounded-xl transition-all text-sm font-semibold text-slate-500 hover:bg-primary/5 hover:text-primary; }
+        .sidebar-link.active { @apply bg-primary text-white shadow-lg shadow-primary/20 hover:bg-primary hover:text-white; }
+    </style>
+</head>
+<body class="bg-background-light text-slate-900 min-h-screen flex flex-col">
+<header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+<div class="max-w-[1600px] mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-3 w-64">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-icons">waves</span>
+</div>
+<div>
+<h1 class="font-bold text-xl leading-none">Skywhale</h1>
+<p class="text-[10px] uppercase tracking-widest text-primary/80 font-bold">Buyer Portal</p>
+</div>
+</div>
+<nav class="hidden md:flex items-center gap-12">
+<a class="text-xs font-bold text-slate-600 hover:text-primary transition-colors uppercase tracking-wider" href="#">Home</a>
+<a class="text-xs font-bold text-slate-600 hover:text-primary transition-colors uppercase tracking-wider" href="#">About Us</a>
+<a class="text-xs font-bold text-slate-600 hover:text-primary transition-colors uppercase tracking-wider" href="#">Contact</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full">
+<span class="material-icons text-slate-400 text-sm">account_circle</span>
+<span class="text-xs font-bold text-slate-700">Lekki Manufacturing Ltd</span>
+</div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 max-w-[1600px] mx-auto w-full">
+<aside class="w-72 bg-white border-r border-slate-200 p-6 hidden lg:block sticky top-20 h-[calc(100vh-80px)]">
+<nav class="space-y-2">
+<a class="sidebar-link" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                    Dashboard
+                </a>
+<a class="sidebar-link" href="#">
+<span class="material-symbols-outlined">storefront</span>
+                    Marketplace
+                </a>
+<a class="sidebar-link" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+                    My Orders
+                </a>
+<a class="sidebar-link" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+                    Wallet &amp; Payments
+                </a>
+<a class="sidebar-link active" href="#">
+<span class="material-symbols-outlined">payments</span>
+                    Credit Application
+                </a>
+<a class="sidebar-link" href="#">
+<span class="material-symbols-outlined">local_shipping</span>
+                    Tracking
+                </a>
+<div class="pt-4 mt-4 border-t border-slate-100">
+<a class="sidebar-link" href="#">
+<span class="material-symbols-outlined">settings</span>
+                        Settings
+                    </a>
+</div>
+</nav>
+<div class="mt-8 bg-blue-50 rounded-2xl p-5 border border-blue-100">
+<h4 class="text-xs font-bold text-primary mb-2 flex items-center gap-2 uppercase tracking-tight">
+<span class="material-icons text-sm">support_agent</span>
+                    Need Help?
+                </h4>
+<p class="text-[11px] text-slate-600 mb-4 leading-relaxed">Our credit officers are ready to assist with your application.</p>
+<button class="w-full bg-white text-primary border border-blue-200 font-bold py-2 rounded-lg text-[10px] uppercase hover:bg-blue-100 transition-colors">
+                    Chat Support
+                </button>
+</div>
+</aside>
+<main class="flex-1 px-8 py-10 overflow-y-auto">
+<div class="max-w-5xl mx-auto">
+<div class="flex flex-col xl:flex-row gap-10">
+<div class="flex-1">
+<div class="mb-10 px-4">
+<div class="flex items-center justify-between relative max-w-md mx-auto">
+<div class="absolute top-5 left-0 w-full h-0.5 bg-slate-200 -z-10"></div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 bg-white border-2 border-primary text-primary rounded-full flex items-center justify-center font-bold shadow-sm relative z-10">1</div>
+<span class="text-[10px] font-bold text-primary uppercase tracking-wider">Financials</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 bg-white border-2 border-slate-200 text-slate-400 rounded-full flex items-center justify-center font-bold relative z-10">2</div>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Limit</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 bg-white border-2 border-slate-200 text-slate-400 rounded-full flex items-center justify-center font-bold relative z-10">3</div>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Agreement</span>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-3xl p-8 md:p-10 shadow-xl shadow-slate-200/50 border border-slate-100">
+<div class="mb-8">
+<h2 class="text-2xl font-bold text-slate-900">Credit Application</h2>
+<p class="text-slate-500 text-sm mt-1 uppercase tracking-tight font-medium">Business Financial Details</p>
+</div>
+<form class="space-y-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-xs font-bold text-slate-600 uppercase tracking-wider">Avg Monthly Diesel Spend (₦)</label>
+<input class="form-input" placeholder="e.g. 1,500,000" type="number"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-slate-600 uppercase tracking-wider">Tax ID Number (TIN)</label>
+<input class="form-input" placeholder="12345678-0001" type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-slate-600 uppercase tracking-wider">Bank Statement (Last 3 Months)</label>
+<div class="border-2 border-dashed border-slate-200 rounded-2xl p-8 text-center hover:border-primary transition-colors cursor-pointer group bg-slate-50/50">
+<span class="material-icons text-4xl text-slate-300 group-hover:text-primary mb-2">cloud_upload</span>
+<p class="text-sm font-bold text-slate-600">Click to upload or drag and drop</p>
+<p class="text-xs text-slate-400 mt-1 uppercase tracking-widest">PDF, JPG or PNG (Max 10MB)</p>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-100">
+<h3 class="text-lg font-bold text-slate-900 mb-6">Requested Credit Limit</h3>
+<div class="space-y-6">
+<div class="flex justify-between items-center">
+<span class="text-sm font-bold text-slate-600">Requested Amount</span>
+<span class="text-xl font-black text-primary">₦2,500,000</span>
+</div>
+<input class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-primary" max="5000000" min="500000" step="50000" type="range" value="2500000"/>
+<div class="flex justify-between text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+<span>Min ₦500k</span>
+<span>Max ₦5M</span>
+</div>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-100">
+<h3 class="text-lg font-bold text-slate-900 mb-6">Repayment Terms &amp; Interest</h3>
+<div class="overflow-hidden rounded-2xl border border-slate-100">
+<table class="w-full text-left">
+<thead class="bg-slate-50">
+<tr>
+<th class="px-6 py-4 text-[10px] font-bold text-slate-500 uppercase tracking-widest">Repayment Period</th>
+<th class="px-6 py-4 text-[10px] font-bold text-slate-500 uppercase tracking-widest text-right">Interest Rate</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<tr>
+<td class="px-6 py-4 text-sm font-semibold">7-Day Payback Plan</td>
+<td class="px-6 py-4 text-sm font-bold text-primary text-right">1.5%</td>
+</tr>
+<tr>
+<td class="px-6 py-4 text-sm font-semibold">14-Day Payback Plan</td>
+<td class="px-6 py-4 text-sm font-bold text-primary text-right">2.5%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-4 flex items-start gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100">
+<span class="material-icons text-primary text-sm mt-0.5">verified_user</span>
+<p class="text-[11px] text-slate-500 leading-relaxed font-medium">By submitting this application, you agree to an automated debit mandate for repayments on the due date.</p>
+</div>
+</div>
+<div class="flex items-center gap-4 pt-4">
+<button class="flex-1 bg-primary text-white font-extrabold uppercase tracking-widest text-xs py-5 rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.01] transition-all" type="button">
+                                        Submit Application
+                                    </button>
+</div>
+</form>
+</div>
+</div>
+<aside class="w-full xl:w-80 shrink-0">
+<div class="sticky top-28 space-y-6">
+<div class="bg-slate-900 rounded-3xl p-8 text-white shadow-xl shadow-slate-900/20">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 bg-brand-yellow rounded-lg flex items-center justify-center text-slate-900">
+<span class="material-icons">info</span>
+</div>
+<h3 class="font-bold text-lg">Why use Credit?</h3>
+</div>
+<ul class="space-y-6">
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-brand-yellow">account_balance_wallet</span>
+<div>
+<h4 class="text-sm font-bold">Cash Flow Management</h4>
+<p class="text-[11px] text-slate-400 mt-1 leading-relaxed">Keep your working capital for operations while powering your business.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-brand-yellow">bolt</span>
+<div>
+<h4 class="text-sm font-bold">Consistent Power</h4>
+<p class="text-[11px] text-slate-400 mt-1 leading-relaxed">Never run out of fuel. Order now, pay later even when liquid cash is tight.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-brand-yellow">trending_down</span>
+<div>
+<h4 class="text-sm font-bold">Bulk Savings</h4>
+<p class="text-[11px] text-slate-400 mt-1 leading-relaxed">Lock in lower bulk prices today and spread the cost over 14 days.</p>
+</div>
+</li>
+</ul>
+<div class="mt-8 pt-8 border-t border-slate-800">
+<div class="bg-slate-800/50 p-4 rounded-2xl">
+<p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2">Automated Payout</p>
+<p class="text-[11px] text-slate-300 leading-relaxed italic">"Applying for credit enables the automated debit agreement for seamless repayment."</p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</main>
+</div>
+<footer class="py-8 border-t border-slate-200 bg-white">
+<div class="max-w-[1600px] mx-auto px-6 text-center">
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">© 2024 Skywhale Click &amp; Serve. All rights reserved.</p>
+</div>
+</footer>
+
+</body></html>

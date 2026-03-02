@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Skywhale - Supplier Fleet Tracking</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "accent-yellow": "#facc15",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        "sans": ["Montserrat", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.375rem",
+                        "lg": "0.5rem",
+                        "xl": "1rem",
+                        "2xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply font-sans;
+            }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+        }
+        .active-nav {
+            @apply bg-primary/10 text-primary border-r-4 border-primary;
+        }
+        .map-container {
+            background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBpC4sima3Av4Zb3lb1kNP00sFBGw9zvcCMRLcwlD7OTirKNVngl-aFC-XF6jmdNUn6cDTE7XDltsP-nqHQE-1FvRdNksjJpL2Vde3x2CI7dX6Z2jCdERi8hPn_ykPjCtG4KmY9c3QRQL7qkLB4jzgqVaOy-UACwSUxcYY0qCMnIHQhR4DFja2WloAGs2AAcr254tyqSWMBeNInWvZjk-Ze8VEVkGgCgTk5WZE8anFzCk9GY2V6e3atjgfXrkmcJCjv3MdFijbIMmM);
+            background-size: cover;
+            background-position: center
+        }
+        .truck-icon {
+            @apply absolute bg-primary text-white p-1 rounded-full shadow-lg border-2 border-white flex items-center justify-center;
+            transition: all 0.3s ease
+        }
+        .truck-icon:hover {
+            @apply scale-110 z-10;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<aside class="w-72 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col z-20">
+<div class="p-6 flex items-center gap-3">
+<div class="bg-primary p-2 rounded-xl">
+<span class="material-symbols-outlined text-white text-2xl">local_shipping</span>
+</div>
+<div>
+<h1 class="text-xl font-black tracking-tight leading-tight">Skywhale</h1>
+<p class="text-[10px] text-primary font-bold uppercase tracking-widest">Supplier Portal</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1 mt-4 overflow-y-auto">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-bold">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-sm font-bold">My Stock</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-sm font-bold">Active Orders</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+<div class="flex flex-col">
+<span class="text-sm font-bold">FastPay</span>
+<span class="text-[9px] text-primary font-bold">(Discounting)</span>
+</div>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg active-nav" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">distance</span>
+<span class="text-sm font-bold">Fleet Management</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">sensors</span>
+<span class="text-sm font-bold">IoT Monitoring</span>
+</a>
+<div class="my-4 border-t border-slate-100 dark:border-slate-800 mx-4"></div>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-bold">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50">
+<img alt="User Avatar" class="size-10 rounded-full object-cover border-2 border-primary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATx_syA1wSVHKlxw92mPh6TqBHDF7VpyebUuZJNPUOrwMWaqeX92RQX_Qcf-4FcbHuA7zkpRRjF5wRo-Dwuli96JeBdk02iyn2Vbxa2JR6niD9rrP1Q4WSQYsBGC18w8dyaJIXWUqr1Pe7Bpq8DEj58sMW1aqa1aCYl3FUL7KKPHTvsP8UGulJfGrkwsI-ACNGkpnm2zpF6FUNfL9wyB_cpzzrPf1dPx7K_4TDVKfFPbQhpeSpNgm79lCNJaoNchx_-QV6qML2IoE"/>
+<div class="overflow-hidden">
+<p class="text-xs font-black truncate">Bolanle &amp; Sons Ltd</p>
+<p class="text-[10px] text-slate-500 font-bold">Tier 1 Supplier</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col overflow-hidden relative">
+<header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 p-6 z-10">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+<div>
+<h2 class="text-2xl font-black">Fleet Management</h2>
+<p class="text-sm text-slate-500 font-medium">Real-time logistics monitoring &amp; truck tracking</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 flex-1 lg:max-w-4xl">
+<div class="bg-slate-50 dark:bg-slate-800/50 p-3 rounded-xl border border-slate-100 dark:border-slate-700 text-center">
+<p class="text-[10px] font-bold text-slate-500 uppercase">Total Trucks</p>
+<p class="text-xl font-black text-slate-900 dark:text-white">12</p>
+</div>
+<div class="bg-green-50 dark:bg-green-900/10 p-3 rounded-xl border border-green-100 dark:border-green-900/30 text-center">
+<p class="text-[10px] font-bold text-green-600 uppercase">Active</p>
+<p class="text-xl font-black text-green-700 dark:text-green-400">8</p>
+</div>
+<div class="bg-yellow-50 dark:bg-yellow-900/10 p-3 rounded-xl border border-yellow-100 dark:border-yellow-900/30 text-center">
+<p class="text-[10px] font-bold text-yellow-600 uppercase">In Maintenance</p>
+<p class="text-xl font-black text-yellow-700 dark:text-yellow-400">1</p>
+</div>
+<div class="bg-primary/5 p-3 rounded-xl border border-primary/10 text-center">
+<p class="text-[10px] font-bold text-primary uppercase">Fuel Delivered Today</p>
+<p class="text-xl font-black text-primary">150k <span class="text-sm">L</span></p>
+</div>
+</div>
+</div>
+</header>
+<div class="flex-1 flex overflow-hidden">
+<div class="flex-1 relative bg-slate-200 overflow-hidden map-container">
+<div class="absolute inset-0 bg-primary/5 pointer-events-none"></div>
+<div class="absolute top-6 left-6 flex flex-col gap-2">
+<button class="bg-white dark:bg-slate-900 p-2 rounded-lg shadow-xl hover:bg-slate-50 transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">add</span>
+</button>
+<button class="bg-white dark:bg-slate-900 p-2 rounded-lg shadow-xl hover:bg-slate-50 transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">remove</span>
+</button>
+</div>
+<div class="truck-icon" style="top: 70%; left: 30%;">
+<span class="material-symbols-outlined text-sm">local_shipping</span>
+<div class="absolute top-full mt-1 bg-white dark:bg-slate-900 px-2 py-0.5 rounded shadow text-[9px] font-bold text-primary border border-primary/20 whitespace-nowrap">SW-290</div>
+</div>
+<div class="truck-icon" style="top: 45%; left: 55%;">
+<span class="material-symbols-outlined text-sm">local_shipping</span>
+<div class="absolute top-full mt-1 bg-white dark:bg-slate-900 px-2 py-0.5 rounded shadow text-[9px] font-bold text-primary border border-primary/20 whitespace-nowrap">SW-312</div>
+</div>
+<div class="truck-icon" style="top: 30%; left: 70%;">
+<span class="material-symbols-outlined text-sm">local_shipping</span>
+<div class="absolute top-full mt-1 bg-white dark:bg-slate-900 px-2 py-0.5 rounded shadow text-[9px] font-bold text-primary border border-primary/20 whitespace-nowrap">SW-105</div>
+</div>
+<div class="truck-icon" style="top: 65%; left: 60%;">
+<span class="material-symbols-outlined text-sm">local_shipping</span>
+<div class="absolute top-full mt-1 bg-white dark:bg-slate-900 px-2 py-0.5 rounded shadow text-[9px] font-bold text-primary border border-primary/20 whitespace-nowrap">SW-284</div>
+</div>
+</div>
+<div class="w-96 bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 flex flex-col shadow-2xl z-10">
+<div class="p-6 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center">
+<h3 class="font-black text-lg">Fleet Overview</h3>
+<span class="material-symbols-outlined text-slate-400 cursor-pointer">filter_list</span>
+</div>
+<div class="flex-1 overflow-y-auto">
+<div class="divide-y divide-slate-100 dark:divide-slate-800">
+<div class="p-6 bg-primary/5 border-l-4 border-primary">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h4 class="font-black text-slate-900 dark:text-white">Truck ID: SW-290</h4>
+<p class="text-xs font-bold text-slate-500">Driver: Bolanle</p>
+</div>
+<span class="px-2 py-1 bg-primary text-white text-[9px] font-black uppercase rounded">In Transit</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold">
+<span class="text-slate-500 uppercase">Fuel Load</span>
+<span class="text-slate-900 dark:text-white">25,000L</span>
+</div>
+<div class="w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[85%]"></div>
+</div>
+<div class="pt-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-sm">location_on</span>
+<p class="text-xs font-bold text-slate-700 dark:text-slate-300">To: Ikeja Terminal 2</p>
+</div>
+</div>
+</div>
+<div class="p-6 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h4 class="font-black text-slate-900 dark:text-white">Truck ID: SW-412</h4>
+<p class="text-xs font-bold text-slate-500">Driver: Emeka</p>
+</div>
+<span class="px-2 py-1 bg-accent-yellow text-slate-900 text-[9px] font-black uppercase rounded">Loading</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold">
+<span class="text-slate-500 uppercase">Fuel Load</span>
+<span class="text-slate-900 dark:text-white">12,400L</span>
+</div>
+<div class="w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="bg-accent-yellow h-full w-[45%]"></div>
+</div>
+<div class="pt-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-sm">location_on</span>
+<p class="text-xs font-bold text-slate-700 dark:text-slate-300">At: Apapa Depot</p>
+</div>
+</div>
+</div>
+<div class="p-6 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h4 class="font-black text-slate-900 dark:text-white">Truck ID: SW-089</h4>
+<p class="text-xs font-bold text-slate-500">Driver: Suleiman</p>
+</div>
+<span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-[9px] font-black uppercase rounded">Idle</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold">
+<span class="text-slate-500 uppercase">Fuel Load</span>
+<span class="text-slate-900 dark:text-white">2,000L</span>
+</div>
+<div class="w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="bg-red-500 h-full w-[10%]"></div>
+</div>
+<div class="pt-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-sm">location_on</span>
+<p class="text-xs font-bold text-slate-700 dark:text-slate-300">At: Kano Yard</p>
+</div>
+</div>
+</div>
+<div class="p-6 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h4 class="font-black text-slate-900 dark:text-white">Truck ID: SW-112</h4>
+<p class="text-xs font-bold text-slate-500">Driver: Ifeanyi</p>
+</div>
+<span class="px-2 py-1 bg-primary text-white text-[9px] font-black uppercase rounded">In Transit</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold">
+<span class="text-slate-500 uppercase">Fuel Load</span>
+<span class="text-slate-900 dark:text-white">30,000L</span>
+</div>
+<div class="w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[100%]"></div>
+</div>
+<div class="pt-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-sm">location_on</span>
+<p class="text-xs font-bold text-slate-700 dark:text-slate-300">To: Port Harcourt Refinery</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 bg-slate-50 dark:bg-slate-800/80 border-t border-slate-200 dark:border-slate-800">
+<button class="w-full bg-primary text-white font-black py-4 rounded-xl shadow-lg shadow-primary/30 flex items-center justify-center gap-2 hover:bg-primary/90 transition-all">
+<span class="material-symbols-outlined text-sm">add_circle</span>
+                        Register New Vehicle
+                    </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

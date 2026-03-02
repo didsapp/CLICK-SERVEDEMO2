@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Skywhale Supplier - My Stock</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "accent-yellow": "#facc15",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "success": "#22c55e",
+                        "warning": "#f59e0b",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            .material-symbols-outlined {
+                font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            }
+            .active-nav {
+                @apply bg-primary/10 border-l-4 border-primary text-primary;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<aside class="w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col shrink-0">
+<div class="p-6 flex items-center gap-3">
+<div class="bg-primary p-2 rounded-lg">
+<span class="material-symbols-outlined text-white text-2xl">local_shipping</span>
+</div>
+<div>
+<h1 class="text-lg font-bold leading-tight">Skywhale</h1>
+<p class="text-xs text-slate-500 font-medium">Supplier Portal</p>
+</div>
+</div>
+<nav class="flex-1 px-3 space-y-1 overflow-y-auto">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-semibold">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg active-nav transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">inventory_2</span>
+<span class="text-sm font-semibold">My Stock</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-sm font-semibold">Active Orders</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">bolt</span>
+<span class="text-sm font-semibold">FastPay (Discounting)</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">minor_crash</span>
+<span class="text-sm font-semibold">Fleet Management</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">sensors</span>
+<span class="text-sm font-semibold">IoT Monitoring</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-semibold">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3 p-2 rounded-xl bg-slate-50 dark:bg-slate-800/50">
+<img alt="User Profile" class="size-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJJ4T4UYLKE0ElBd0k9rDjmbI9V415JRKeybiNuS7C7YctDNbwlMxcU2yMWZaWa9J9eK_DrxwNIi8LSt-IwPfs1CFjovy-D1yr1WyvQuWV_L8VPwvdylnFE-5XQFtd-y2rKRB5Uu70_Dinv5FdSNJx7FVlTh01HDsTHtEVDm-waUEZRavEkXQYf8PaF4FyvyeeuqLLqb_Jh5pzYOcNTi4L5YZCSk3KdO_5g6MfXxGhj69Y8Lo5BvFt11qCFcFBYBq2p9G5a3jWGgQ"/>
+<div class="overflow-hidden">
+<p class="text-xs font-bold truncate">Chidubem Okafor</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-wider">Fleet Manager</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col overflow-hidden">
+<header class="h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 shrink-0">
+<div class="flex items-center gap-6">
+<h2 class="text-xl font-bold">My Stock</h2>
+<div class="h-8 w-px bg-slate-200 dark:bg-slate-800"></div>
+<div class="flex items-center gap-3">
+<span class="text-xs font-bold text-slate-500 uppercase">Your Active Price</span>
+<div class="flex items-center bg-slate-100 dark:bg-slate-800 rounded-full p-1 border border-slate-200 dark:border-slate-700">
+<span class="px-3 py-1 text-[11px] font-black bg-white dark:bg-slate-900 rounded-full shadow-sm text-primary">₦1,150/L</span>
+<div class="flex items-center gap-2 px-3 py-1">
+<span class="text-[10px] font-bold text-slate-500 uppercase">Update Price</span>
+<label class="relative inline-flex items-center cursor-pointer scale-75">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative cursor-pointer">
+<span class="material-symbols-outlined text-slate-400">notifications</span>
+<span class="absolute top-0 right-0 size-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-900"></span>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg text-sm font-bold shadow-md shadow-primary/20">
+<span class="material-symbols-outlined text-sm">publish</span>
+                    Push to Marketplace
+                </button>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto p-8">
+<div class="max-w-7xl mx-auto space-y-8">
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800">
+<h3 class="font-bold text-slate-800 dark:text-slate-100">Add / Edit Stock Listing</h3>
+<p class="text-xs text-slate-500">Update your current inventory levels and pricing for the marketplace</p>
+</div>
+<form class="p-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="space-y-2">
+<label class="text-xs font-bold text-slate-500 uppercase">Selling Price (₦/Litre)</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 font-bold text-slate-400">₦</span>
+<input class="w-full pl-8 pr-4 py-2 bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary" placeholder="1,150" type="number"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-slate-500 uppercase">Density (@ 15°C kg/m³)</label>
+<input class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary" placeholder="0.845" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-slate-500 uppercase">Available Quantity (Litres)</label>
+<input class="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary focus:border-primary" placeholder="50,000" type="number"/>
+</div>
+</div>
+<div class="mt-6 flex justify-end gap-3">
+<button class="px-4 py-2 text-sm font-bold text-slate-600 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg" type="button">Reset Fields</button>
+<button class="px-6 py-2 bg-primary text-white text-sm font-bold rounded-lg shadow-lg shadow-primary/20" type="submit">Update Stock</button>
+</div>
+</form>
+</section>
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center">
+<h3 class="font-bold text-slate-800 dark:text-slate-100">Current Inventory Listings</h3>
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold text-success flex items-center gap-1">
+<span class="size-2 bg-success rounded-full"></span> Live on Market
+                            </span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-slate-800/50 text-[10px] uppercase font-bold text-slate-500">
+<tr>
+<th class="px-6 py-4">Product Type</th>
+<th class="px-6 py-4">Quantity (L)</th>
+<th class="px-6 py-4">Price / L</th>
+<th class="px-6 py-4">Density</th>
+<th class="px-6 py-4">Last Updated</th>
+<th class="px-6 py-4">Status</th>
+<th class="px-6 py-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">oil_barrel</span>
+</div>
+<span class="text-sm font-bold">AGO (Diesel)</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-semibold">45,000 L</td>
+<td class="px-6 py-4 text-sm font-bold text-primary">₦1,150</td>
+<td class="px-6 py-4 text-sm text-slate-500">0.845 kg/m³</td>
+<td class="px-6 py-4 text-xs text-slate-500">2 hours ago</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-400 text-[10px] font-bold rounded uppercase tracking-tighter">Active</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-md text-slate-400">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="p-1.5 hover:bg-red-50 text-red-400 rounded-md">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-400 text-sm">oil_barrel</span>
+</div>
+<span class="text-sm font-bold">Low Pour Fuel Oil</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-semibold">120,000 L</td>
+<td class="px-6 py-4 text-sm font-bold text-primary">₦980</td>
+<td class="px-6 py-4 text-sm text-slate-500">0.920 kg/m³</td>
+<td class="px-6 py-4 text-xs text-slate-500">1 day ago</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-slate-100 text-slate-500 dark:bg-slate-800 text-[10px] font-bold rounded uppercase tracking-tighter">Draft</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-md text-slate-400">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="p-1.5 hover:bg-red-50 text-red-400 rounded-md">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary">trending_up</span>
+<h4 class="text-xs font-bold text-slate-500 uppercase">Demand Intensity</h4>
+</div>
+<p class="text-2xl font-black">High</p>
+<p class="text-xs text-success font-bold mt-1">15% increase in searches this week</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-accent-yellow">account_balance_wallet</span>
+<h4 class="text-xs font-bold text-slate-500 uppercase">Est. Stock Value</h4>
+</div>
+<p class="text-2xl font-black">₦51.75M</p>
+<p class="text-xs text-slate-500 font-medium mt-1">Based on current market price</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-success">timer</span>
+<h4 class="text-xs font-bold text-slate-500 uppercase">Avg. Turnover</h4>
+</div>
+<p class="text-2xl font-black">4.2 Days</p>
+<p class="text-xs text-slate-500 font-medium mt-1">Time to clear full inventory</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

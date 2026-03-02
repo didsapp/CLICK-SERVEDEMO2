@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Skywhale Supplier - FastPay (Discounting)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "accent-yellow": "#facc15",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "success": "#22c55e",
+                        "warning": "#f59e0b",
+                    },
+                    fontFamily: {
+                        "sans": ["Montserrat", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            .material-symbols-outlined {
+                font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            }
+            .active-nav {
+                @apply bg-primary/10 border-l-4 border-primary text-primary !important;
+            }
+            .active-nav .material-symbols-outlined {
+                font-variation-settings: 'FILL' 1;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-sans text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<aside class="w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col shrink-0">
+<div class="p-6 flex items-center gap-3">
+<div class="bg-primary p-2 rounded-lg">
+<span class="material-symbols-outlined text-white text-2xl">local_shipping</span>
+</div>
+<div>
+<h1 class="text-lg font-bold leading-tight tracking-tight text-slate-800 dark:text-white">Skywhale</h1>
+<p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Supplier Portal</p>
+</div>
+</div>
+<nav class="flex-1 px-3 space-y-1 overflow-y-auto mt-2">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-primary">dashboard</span>
+<span class="text-sm font-semibold">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-primary">inventory_2</span>
+<span class="text-sm font-semibold">My Stock</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-primary">receipt_long</span>
+<span class="text-sm font-semibold">Orders &amp; Invoices</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg active-nav transition-colors" href="#">
+<span class="material-symbols-outlined">bolt</span>
+<span class="text-sm font-bold">FastPay (Discounting)</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-primary">minor_crash</span>
+<span class="text-sm font-semibold">Fleet Tracking</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-primary">sensors</span>
+<span class="text-sm font-semibold">IoT Monitoring</span>
+</a>
+<div class="pt-4 pb-2 px-3">
+<p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Account</p>
+</div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-primary">account_balance</span>
+<span class="text-sm font-semibold">Bank Details</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-primary">settings</span>
+<span class="text-sm font-semibold">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3 p-2 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
+<img alt="User Profile" class="size-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJJ4T4UYLKE0ElBd0k9rDjmbI9V415JRKeybiNuS7C7YctDNbwlMxcU2yMWZaWa9J9eK_DrxwNIi8LSt-IwPfs1CFjovy-D1yr1WyvQuWV_L8VPwvdylnFE-5XQFtd-y2rKRB5Uu70_Dinv5FdSNJx7FVlTh01HDsTHtEVDm-waUEZRavEkXQYf8PaF4FyvyeeuqLLqb_Jh5pzYOcNTi4L5YZCSk3KdO_5g6MfXxGhj69Y8Lo5BvFt11qCFcFBYBq2p9G5a3jWGgQ"/>
+<div class="overflow-hidden">
+<p class="text-xs font-bold truncate">Chidubem Okafor</p>
+<p class="text-[9px] text-slate-500 font-bold uppercase tracking-wider">Fleet Manager</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col overflow-hidden">
+<header class="h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 shrink-0">
+<div class="flex items-center gap-6">
+<h2 class="text-xl font-extrabold text-slate-800 dark:text-white">FastPay <span class="text-primary">(Discounting)</span></h2>
+<div class="h-8 w-px bg-slate-200 dark:bg-slate-800"></div>
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-1 bg-accent-yellow/10 text-accent-yellow text-[10px] font-black uppercase rounded border border-accent-yellow/20">Finance Enabled</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined text-slate-500">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-900"></span>
+</div>
+<div class="h-8 w-px bg-slate-200 dark:bg-slate-800"></div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-bold">Main Account</p>
+<p class="text-[10px] text-slate-500 font-semibold">Verified Supplier</p>
+</div>
+<img alt="Profile" class="size-8 rounded-full ring-2 ring-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJJ4T4UYLKE0ElBd0k9rDjmbI9V415JRKeybiNuS7C7YctDNbwlMxcU2yMWZaWa9J9eK_DrxwNIi8LSt-IwPfs1CFjovy-D1yr1WyvQuWV_L8VPwvdylnFE-5XQFtd-y2rKRB5Uu70_Dinv5FdSNJx7FVlTh01HDsTHtEVDm-waUEZRavEkXQYf8PaF4FyvyeeuqLLqb_Jh5pzYOcNTi4L5YZCSk3KdO_5g6MfXxGhj69Y8Lo5BvFt11qCFcFBYBq2p9G5a3jWGgQ"/>
+</div>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto p-8 bg-slate-50/50 dark:bg-background-dark">
+<div class="max-w-7xl mx-auto space-y-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-primary rounded-2xl p-6 shadow-xl shadow-primary/20 relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 text-white/10 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-[120px]">bolt</span>
+</div>
+<div class="relative z-10">
+<h4 class="text-white/80 text-xs font-bold uppercase tracking-wider mb-1">Total Discountable Value</h4>
+<p class="text-3xl font-black text-white">₦14,250,000</p>
+<div class="mt-4 flex items-center gap-2">
+<span class="text-white/60 text-[10px] font-bold">FROM 12 ELIGIBLE INVOICES</span>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<h4 class="text-xs font-bold text-slate-500 uppercase">Discount Rate</h4>
+<span class="material-symbols-outlined text-accent-yellow">percent</span>
+</div>
+<p class="text-3xl font-black">1.5%</p>
+</div>
+<p class="text-xs text-slate-500 font-medium mt-1">Per 30-day early settlement cycle</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<h4 class="text-xs font-bold text-slate-500 uppercase">Early Cash Liquidity</h4>
+<span class="material-symbols-outlined text-success">account_balance</span>
+</div>
+<p class="text-3xl font-black">₦14,036,250</p>
+</div>
+<p class="text-[10px] text-success font-bold mt-1 flex items-center gap-1 uppercase">
+<span class="material-symbols-outlined text-xs">verified</span> Ready for immediate payout
+                        </p>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<section class="lg:col-span-2 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden flex flex-col">
+<div class="px-6 py-5 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center bg-slate-50/50 dark:bg-slate-800/20">
+<div>
+<h3 class="font-bold text-slate-800 dark:text-slate-100">Eligible Early Payouts</h3>
+<p class="text-[11px] text-slate-500 font-medium">Select invoices to include in your FastPay request</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-xs font-bold text-primary hover:underline">Select All</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-slate-800/50 text-[10px] uppercase font-black text-slate-400">
+<tr>
+<th class="px-6 py-4 w-10">
+<input class="rounded text-primary focus:ring-primary border-slate-300 dark:bg-slate-700" type="checkbox"/>
+</th>
+<th class="px-6 py-4">Invoice ID</th>
+<th class="px-6 py-4">Customer</th>
+<th class="px-6 py-4 text-right">Gross Value</th>
+<th class="px-6 py-4 text-center">Due In</th>
+<th class="px-6 py-4">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<input checked="" class="rounded text-primary focus:ring-primary border-slate-300 dark:bg-slate-700" type="checkbox"/>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs font-bold text-slate-800 dark:text-slate-200">#INV-SW-9921</span>
+<p class="text-[9px] text-slate-500 font-medium">12 Oct 2023</p>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="size-6 bg-slate-100 dark:bg-slate-800 rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-xs">corporate_fare</span>
+</div>
+<span class="text-xs font-semibold">Dangote Cement</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right text-xs font-bold text-slate-900 dark:text-white">₦4,200,000</td>
+<td class="px-6 py-4 text-center">
+<span class="px-2 py-0.5 bg-warning/10 text-warning text-[9px] font-bold rounded">18 Days</span>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-400 text-[9px] font-bold rounded uppercase">Verified</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<input checked="" class="rounded text-primary focus:ring-primary border-slate-300 dark:bg-slate-700" type="checkbox"/>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs font-bold text-slate-800 dark:text-slate-200">#INV-SW-8812</span>
+<p class="text-[9px] text-slate-500 font-medium">15 Oct 2023</p>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="size-6 bg-slate-100 dark:bg-slate-800 rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-xs">business</span>
+</div>
+<span class="text-xs font-semibold">Tolaram Group</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right text-xs font-bold text-slate-900 dark:text-white">₦8,550,000</td>
+<td class="px-6 py-4 text-center">
+<span class="px-2 py-0.5 bg-warning/10 text-warning text-[9px] font-bold rounded">24 Days</span>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-400 text-[9px] font-bold rounded uppercase">Verified</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<input checked="" class="rounded text-primary focus:ring-primary border-slate-300 dark:bg-slate-700" type="checkbox"/>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs font-bold text-slate-800 dark:text-slate-200">#INV-SW-7745</span>
+<p class="text-[9px] text-slate-500 font-medium">16 Oct 2023</p>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="size-6 bg-slate-100 dark:bg-slate-800 rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-xs">store</span>
+</div>
+<span class="text-xs font-semibold">PZ Cussons Nig</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right text-xs font-bold text-slate-900 dark:text-white">₦1,500,000</td>
+<td class="px-6 py-4 text-center">
+<span class="px-2 py-0.5 bg-warning/10 text-warning text-[9px] font-bold rounded">28 Days</span>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-400 text-[9px] font-bold rounded uppercase">Verified</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-6 border-t border-slate-200 dark:border-slate-800 bg-slate-50/30 text-center">
+<button class="text-xs font-bold text-slate-500 hover:text-primary transition-colors uppercase tracking-widest">Load More Invoices</button>
+</div>
+</section>
+<aside class="space-y-6">
+<section class="bg-white dark:bg-slate-900 rounded-2xl border-2 border-primary/20 p-6 shadow-xl shadow-primary/5">
+<h3 class="font-bold text-lg mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">account_balance_wallet</span>
+                                Get Paid Now
+                            </h3>
+<div class="space-y-4">
+<div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-xs text-slate-500 font-semibold">Selected Amount:</span>
+<span class="text-sm font-black">₦14,250,000</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs text-slate-500 font-semibold">Service Fee (1.5%):</span>
+<span class="text-sm font-black text-red-500">- ₦213,750</span>
+</div>
+<div class="h-px bg-slate-200 dark:bg-slate-700 w-full"></div>
+<div class="flex justify-between items-center">
+<span class="text-sm font-bold text-slate-900 dark:text-white">Net Payout:</span>
+<span class="text-lg font-black text-primary">₦14,036,250</span>
+</div>
+</div>
+<div class="bg-blue-50 dark:bg-blue-900/10 p-4 rounded-xl border border-blue-100 dark:border-blue-900/20">
+<p class="text-[11px] text-blue-800 dark:text-blue-300 font-medium leading-relaxed">
+<span class="font-bold">Lightning Settlement:</span> Funds will be deposited into your <strong>Zenith Bank (****8291)</strong> account within 15 minutes of approval.
+                                    </p>
+</div>
+<button class="w-full py-4 bg-primary text-white rounded-xl font-bold text-sm shadow-lg shadow-primary/30 flex items-center justify-center gap-3 hover:bg-blue-600 transition-colors">
+<span class="material-symbols-outlined">bolt</span>
+                                    Process Early Payout
+                                </button>
+<p class="text-[10px] text-slate-400 text-center font-medium uppercase tracking-tight">By proceeding, you agree to Skywhale's Factoring T&amp;Cs</p>
+</div>
+</section>
+<section class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6">
+<h4 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Recent Payouts</h4>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-xs font-bold">24 Oct, 2023</p>
+<p class="text-[10px] text-slate-500">Ref: #FP-9982</p>
+</div>
+<div class="text-right">
+<p class="text-xs font-black text-success">₦2,140,000</p>
+<span class="text-[9px] font-bold text-slate-400 uppercase">Settled</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="text-xs font-bold">18 Oct, 2023</p>
+<p class="text-[10px] text-slate-500">Ref: #FP-9941</p>
+</div>
+<div class="text-right">
+<p class="text-xs font-black text-success">₦5,600,000</p>
+<span class="text-[9px] font-bold text-slate-400 uppercase">Settled</span>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 py-2 text-[10px] font-bold text-primary uppercase tracking-widest border border-slate-100 dark:border-slate-800 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50">View Full History</button>
+</section>
+</aside>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

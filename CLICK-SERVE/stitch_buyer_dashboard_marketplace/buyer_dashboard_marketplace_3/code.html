@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Skywhale Click &amp; Serve - Automated PDF Invoice</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#137fec",
+                "accent-yellow": "#FFD700",
+                "background-light": "#f6f7f8",
+                "background-dark": "#101922",
+                "invoice-bg": "#ffffff",
+              },
+              fontFamily: {
+                "sans": ["Montserrat", "sans-serif"],
+                "display": ["Montserrat", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Montserrat', sans-serif; }
+        .invoice-container {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 2rem auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        }
+        @media print {
+            body { background: white; margin: 0; }
+            .no-print { display: none; }
+            .invoice-container { margin: 0; box-shadow: none; width: 100%; }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-900 font-display">
+<div class="no-print flex justify-center py-6 bg-white border-b border-slate-200 sticky top-0 z-50">
+<div class="max-w-4xl w-full px-6 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<a class="text-slate-500 hover:text-primary flex items-center gap-1 text-sm font-semibold" href="#">
+<span class="material-icons text-base">arrow_back</span>
+                Back to Dashboard
+            </a>
+</div>
+<div class="flex gap-3">
+<button class="bg-white border border-slate-300 px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 hover:bg-slate-50 transition-colors">
+<span class="material-icons text-base">share</span>
+                Share
+            </button>
+<button class="bg-primary text-white px-6 py-2 rounded-lg text-sm font-bold shadow-lg shadow-primary/20 flex items-center gap-2 hover:bg-primary/90 transition-colors" onclick="window.print()">
+<span class="material-icons text-base">print</span>
+                Download PDF
+            </button>
+</div>
+</div>
+</div>
+<div class="invoice-container p-12 md:p-16 relative">
+<div class="flex justify-between items-start mb-16">
+<div class="flex items-center gap-3">
+<div class="bg-primary rounded-lg p-2.5 flex items-center justify-center">
+<span class="material-icons text-accent-yellow text-2xl">local_shipping</span>
+</div>
+<div>
+<span class="text-2xl font-black tracking-tighter text-slate-900 block leading-none">Skywhale</span>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">Click &amp; Serve</span>
+</div>
+</div>
+<div class="text-right">
+<h1 class="text-3xl font-black text-slate-900 uppercase tracking-tight">Tax Invoice</h1>
+<p class="text-slate-500 font-semibold mt-1">Invoice No: <span class="text-slate-900">#SW-94821</span></p>
+<p class="text-slate-500 text-sm">Date Issued: Oct 24, 2023</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-12 mb-16">
+<div>
+<h2 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 border-b border-slate-100 pb-2">From</h2>
+<div class="space-y-1">
+<p class="font-extrabold text-slate-900">Skywhale Logistics Limited</p>
+<p class="text-sm text-slate-600 leading-relaxed">
+                    12 Admiralty Way, Lekki Phase 1<br/>
+                    Lagos, Nigeria<br/>
+                    VAT: NG-1029384756<br/>
+                    Email: billing@skywhale.ng
+                </p>
+</div>
+</div>
+<div>
+<h2 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 border-b border-slate-100 pb-2">Billed To</h2>
+<div class="space-y-1">
+<p class="font-extrabold text-slate-900">Chijioke Obi Industries Ltd</p>
+<p class="text-sm text-slate-600 leading-relaxed">
+                    Plot 45B Industrial Avenue, Ikeja<br/>
+                    Lagos, Nigeria<br/>
+                    Contact: +234 803 000 0000<br/>
+                    Email: accounting@obi-industries.ng
+                </p>
+</div>
+</div>
+</div>
+<div class="mb-12">
+<table class="w-full border-collapse">
+<thead>
+<tr class="bg-slate-50 border-y border-slate-200">
+<th class="py-4 px-4 text-left text-[10px] font-black text-slate-500 uppercase tracking-widest">Description</th>
+<th class="py-4 px-4 text-center text-[10px] font-black text-slate-500 uppercase tracking-widest">Quantity</th>
+<th class="py-4 px-4 text-right text-[10px] font-black text-slate-500 uppercase tracking-widest">Unit Price</th>
+<th class="py-4 px-4 text-right text-[10px] font-black text-slate-500 uppercase tracking-widest">Total</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<tr>
+<td class="py-6 px-4">
+<p class="font-bold text-slate-900">AGO (Diesel) Delivery</p>
+<p class="text-xs text-slate-500 mt-1">Premium Low Sulphur Diesel - Total Nigeria PLC</p>
+</td>
+<td class="py-6 px-4 text-center font-medium">10,000 Liters</td>
+<td class="py-6 px-4 text-right font-medium">₦ 1,150.00</td>
+<td class="py-6 px-4 text-right font-bold">₦ 11,500,000.00</td>
+</tr>
+<tr>
+<td class="py-4 px-4">
+<p class="font-bold text-slate-900">Logistics Service Fee</p>
+<p class="text-xs text-slate-500 mt-1">2% Platform Service Charge</p>
+</td>
+<td class="py-4 px-4 text-center font-medium">-</td>
+<td class="py-4 px-4 text-right font-medium">2.0%</td>
+<td class="py-4 px-4 text-right font-bold">₦ 230,000.00</td>
+</tr>
+<tr>
+<td class="py-4 px-4">
+<p class="font-bold text-slate-900">Delivery &amp; Transportation</p>
+<p class="text-xs text-slate-500 mt-1">Flat rate delivery to Ikeja Industrial Zone</p>
+</td>
+<td class="py-4 px-4 text-center font-medium">1 Trip</td>
+<td class="py-4 px-4 text-right font-medium">₦ 85,000.00</td>
+<td class="py-4 px-4 text-right font-bold">₦ 85,000.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="flex justify-end mb-20">
+<div class="w-full max-w-xs space-y-3">
+<div class="flex justify-between text-sm">
+<span class="text-slate-500 font-medium">Subtotal</span>
+<span class="font-bold text-slate-900">₦ 11,815,000.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-500 font-medium">VAT (7.5%)</span>
+<span class="font-bold text-slate-900">₦ 886,125.00</span>
+</div>
+<div class="pt-4 border-t border-slate-200 flex justify-between">
+<span class="text-lg font-black text-slate-900">Total Due</span>
+<span class="text-lg font-black text-primary">₦ 12,701,125.00</span>
+</div>
+</div>
+</div>
+<div class="border-t-2 border-slate-900 pt-8 mt-auto flex justify-between items-end">
+<div class="space-y-6">
+<div>
+<h3 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Payment Terms</h3>
+<p class="text-sm font-bold text-slate-900">Pay in 7 Days (Due Oct 31, 2023)</p>
+<p class="text-xs text-slate-500 mt-1 max-w-sm">Please include invoice number #SW-94821 in bank transfer remarks for faster processing.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="bg-slate-100 p-2 rounded-lg">
+<img alt="Verification QR" class="w-16 h-16 grayscale opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZmOGEo80LS5c-o2HyxyMZKmz_w-VULMOtcYdZU2XpPdV9y49tUfOVG_lh3BItN-wWJR4UvKi4vMikV-yxE1noNUDvQaQcqxpd-fKa_BoZgbyAGCp8w7qOyJmT6mplaRXAiKKmZFmxe1gGDvyN7yUC7KY-GrSniJ9WAYHGRghX1DhKsZDtwtmGZzqJtDTFH9bZ8_dq-uZLMbJR_xOsGh2xLLfIfjjb-T2putRw6bwm1Ioyx9qc7vYB7GW9k6uCGn5uEMh2vz2Fxtg"/>
+</div>
+<div>
+<p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Verify Invoice</p>
+<p class="text-[10px] text-slate-500 mt-1 leading-tight">Scan this QR code to verify the<br/>authenticity of this digital invoice.</p>
+</div>
+</div>
+</div>
+<div class="text-right">
+<div class="mb-4">
+<p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Authorized Signatory</p>
+<div class="h-12 w-32 ml-auto mb-2 border-b border-slate-300 relative">
+<span class="absolute bottom-1 right-0 italic font-medium text-slate-400 text-xs font-serif">A. Adedayo</span>
+</div>
+<p class="text-[10px] font-bold text-slate-900 uppercase">Skywhale Finance Dept.</p>
+</div>
+<p class="text-[10px] text-slate-400 font-medium italic">Skywhale Click &amp; Serve - Empowering Nigeria's Energy Future</p>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full h-1 bg-primary"></div>
+</div>
+
+</body></html>

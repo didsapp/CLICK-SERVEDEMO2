@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Skywhale Click &amp; Serve - Order History &amp; Invoices</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#137fec",
+                "accent-yellow": "#FFD700",
+                "background-light": "#f6f7f8",
+                "background-dark": "#101922",
+              },
+              fontFamily: {
+                "sans": ["Montserrat", "sans-serif"],
+                "display": ["Montserrat", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Montserrat', sans-serif; }
+        .status-delivered { @apply bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400; }
+        .status-transit { @apply bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400; }
+        .status-cancelled { @apply bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400; }
+        .sidebar-link { @apply flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-all font-medium text-sm; }
+        .sidebar-link-active { @apply flex items-center gap-3 px-4 py-3 bg-primary/10 text-primary rounded-lg font-bold text-sm; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display transition-colors duration-200">
+<div class="flex h-screen overflow-hidden">
+<aside class="w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col shrink-0">
+<div class="p-6 flex items-center gap-3">
+<div class="bg-primary rounded-lg p-2 flex items-center justify-center">
+<span class="material-icons text-accent-yellow">local_shipping</span>
+</div>
+<span class="text-xl font-extrabold tracking-tight">Skywhale</span>
+</div>
+<nav class="flex-1 px-4 py-2 space-y-1 overflow-y-auto">
+<a class="sidebar-link" href="#">
+<span class="material-icons text-xl">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="sidebar-link" href="#">
+<span class="material-icons text-xl">storefront</span>
+<span>Marketplace</span>
+</a>
+<a class="sidebar-link-active" href="#">
+<span class="material-icons text-xl">receipt_long</span>
+<span>My Orders</span>
+</a>
+<a class="sidebar-link" href="#">
+<span class="material-icons text-xl">account_balance_wallet</span>
+<span>Wallet &amp; Payments</span>
+</a>
+<a class="sidebar-link" href="#">
+<span class="material-icons text-xl">assignment</span>
+<span>Credit Application</span>
+</a>
+<a class="sidebar-link" href="#">
+<span class="material-icons text-xl">near_me</span>
+<span>Tracking</span>
+</a>
+<a class="sidebar-link" href="#">
+<span class="material-icons text-xl">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<div class="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4 border border-slate-100 dark:border-slate-800">
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">SkyCredit Limit</p>
+<p class="text-lg font-extrabold text-slate-900 dark:text-white">₦ 5,000,000</p>
+<div class="w-full bg-slate-200 dark:bg-slate-700 h-1.5 rounded-full mt-2">
+<div class="bg-accent-yellow h-1.5 rounded-full w-3/4"></div>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col overflow-hidden">
+<header class="h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 z-10 shrink-0">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 text-sm">
+<span class="text-slate-400">App</span>
+<span class="material-icons text-xs text-slate-400">chevron_right</span>
+<span class="font-bold">Order History</span>
+</div>
+<nav class="hidden lg:flex items-center gap-6 ml-8 border-l border-slate-200 dark:border-slate-800 pl-8">
+<a class="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors text-slate-600 dark:text-slate-400" href="#">Home</a>
+<a class="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors text-slate-600 dark:text-slate-400" href="#">About Us</a>
+<a class="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors text-slate-600 dark:text-slate-400" href="#">Contact</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<button class="relative p-2 text-slate-500 dark:text-slate-400">
+<span class="material-icons">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-accent-yellow rounded-full border-2 border-white dark:border-slate-900"></span>
+</button>
+<div class="flex items-center gap-3 pl-4 border-l border-slate-200 dark:border-slate-800">
+<div class="text-right">
+<p class="text-sm font-bold leading-none">Chijioke Obi</p>
+<p class="text-[10px] text-slate-500 font-bold mt-1">INDUSTRIAL BUYER</p>
+</div>
+<img alt="Profile" class="w-9 h-9 rounded-full object-cover border-2 border-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDawwzXLe9fBE5zaG_CIk7KKCobGyt8iayKY1HIkAhao8janYL6s8--BSLw08SIdcwCEbq6u-gl61XXXcrLFjUka_zKN3qwCy8I5xH9xUz35dW0wvTKmZHifbyb-TOGwW94KHPXvzbK3kWPte6QXS9eg3pXU6SCw1vjlUbJ4RAI2z1WNV8HnHFfS4goz9n7qwcqQFVlg11eFLMOIGZAjeKKY3MVyHEXVRqQ7vl119fLPyziQdABbWn9Hqnq0vmPWdwo7XqSNEj9DB8"/>
+</div>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto p-8">
+<div class="max-w-7xl mx-auto space-y-8">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h1 class="text-2xl font-black tracking-tight">Buyer Order History &amp; Invoices</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Manage your diesel procurement records and billing.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 bg-white dark:bg-slate-800 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 text-sm font-bold hover:bg-slate-50 transition-colors">
+<span class="material-icons text-sm text-primary">file_download</span>
+                            Export CSV
+                        </button>
+<button class="bg-primary text-white px-5 py-2 rounded-lg text-sm font-bold shadow-lg shadow-primary/20 flex items-center gap-2 hover:bg-blue-600 transition-colors">
+<span class="material-icons text-sm">add</span>
+                            New Order
+                        </button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<div class="bg-primary/10 p-2 rounded-lg">
+<span class="material-icons text-primary">payments</span>
+</div>
+<span class="text-[10px] font-bold text-green-500 bg-green-50 dark:bg-green-900/20 px-2 py-1 rounded">+12.5%</span>
+</div>
+<p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Total Spent This Month</p>
+<p class="text-2xl font-black mt-1">₦ 12,450,000</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<div class="bg-accent-yellow/10 p-2 rounded-lg">
+<span class="material-icons text-accent-yellow">local_shipping</span>
+</div>
+</div>
+<p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Number of Deliveries</p>
+<p class="text-2xl font-black mt-1">28</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<div class="bg-red-50 p-2 rounded-lg dark:bg-red-900/20">
+<span class="material-icons text-red-500">credit_card</span>
+</div>
+</div>
+<p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Outstanding Credit</p>
+<p class="text-2xl font-black mt-1 text-red-500">₦ 842,000</p>
+</div>
+</div>
+<div class="flex flex-col md:flex-row gap-4 items-center bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
+<div class="relative flex-1 w-full">
+<span class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-800 border-slate-100 dark:border-slate-700 focus:ring-primary focus:border-primary rounded-lg text-sm" placeholder="Search by Order ID or Supplier..." type="text"/>
+</div>
+<div class="flex gap-2 w-full md:w-auto">
+<select class="bg-slate-50 dark:bg-slate-800 border-slate-100 dark:border-slate-700 rounded-lg text-sm font-medium focus:ring-primary">
+<option>All Status</option>
+<option>Delivered</option>
+<option>In Transit</option>
+<option>Cancelled</option>
+</select>
+<select class="bg-slate-50 dark:bg-slate-800 border-slate-100 dark:border-slate-700 rounded-lg text-sm font-medium focus:ring-primary">
+<option>Last 30 Days</option>
+<option>Last 6 Months</option>
+<option>2023</option>
+</select>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+<th class="px-6 py-4 text-[10px] font-black text-slate-500 uppercase tracking-widest">Order ID</th>
+<th class="px-6 py-4 text-[10px] font-black text-slate-500 uppercase tracking-widest">Date</th>
+<th class="px-6 py-4 text-[10px] font-black text-slate-500 uppercase tracking-widest">Supplier Name</th>
+<th class="px-6 py-4 text-[10px] font-black text-slate-500 uppercase tracking-widest">Quantity</th>
+<th class="px-6 py-4 text-[10px] font-black text-slate-500 uppercase tracking-widest">Total Amount</th>
+<th class="px-6 py-4 text-[10px] font-black text-slate-500 uppercase tracking-widest">Status</th>
+<th class="px-6 py-4 text-[10px] font-black text-slate-500 uppercase tracking-widest text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4 font-bold text-sm">#SW-94821</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Oct 24, 2023</td>
+<td class="px-6 py-4 font-semibold text-sm">Total Nigeria PLC</td>
+<td class="px-6 py-4 text-sm">10,000 L</td>
+<td class="px-6 py-4 font-bold text-sm text-primary">₦ 11,815,000</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase status-delivered">Delivered</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors" title="Download Invoice">
+<span class="material-icons text-xl">download</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors" title="View Details">
+<span class="material-icons text-xl">visibility</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4 font-bold text-sm">#SW-94750</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Oct 22, 2023</td>
+<td class="px-6 py-4 font-semibold text-sm">Ardova Energy</td>
+<td class="px-6 py-4 text-sm">5,000 L</td>
+<td class="px-6 py-4 font-bold text-sm text-primary">₦ 5,920,000</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase status-transit">In Transit</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors" title="Download Invoice">
+<span class="material-icons text-xl">download</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors" title="View Details">
+<span class="material-icons text-xl">visibility</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4 font-bold text-sm">#SW-94612</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Oct 18, 2023</td>
+<td class="px-6 py-4 font-semibold text-sm">Rainoil Ltd</td>
+<td class="px-6 py-4 text-sm">15,000 L</td>
+<td class="px-6 py-4 font-bold text-sm text-primary">₦ 17,250,000</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase status-delivered">Delivered</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors" title="Download Invoice">
+<span class="material-icons text-xl">download</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors" title="View Details">
+<span class="material-icons text-xl">visibility</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4 font-bold text-sm">#SW-94503</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Oct 15, 2023</td>
+<td class="px-6 py-4 font-semibold text-sm">Total Nigeria PLC</td>
+<td class="px-6 py-4 text-sm">2,500 L</td>
+<td class="px-6 py-4 font-bold text-sm text-primary">₦ 2,980,000</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase status-cancelled">Cancelled</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 text-slate-200 cursor-not-allowed" disabled="">
+<span class="material-icons text-xl">block</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors" title="View Details">
+<span class="material-icons text-xl">visibility</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4 font-bold text-sm">#SW-94421</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Oct 12, 2023</td>
+<td class="px-6 py-4 font-semibold text-sm">Ardova Energy</td>
+<td class="px-6 py-4 text-sm">10,000 L</td>
+<td class="px-6 py-4 font-bold text-sm text-primary">₦ 11,750,000</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase status-delivered">Delivered</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors" title="Download Invoice">
+<span class="material-icons text-xl">download</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors" title="View Details">
+<span class="material-icons text-xl">visibility</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-6 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+<p class="text-sm text-slate-500">Showing <span class="font-bold">1 to 5</span> of 124 orders</p>
+<div class="flex gap-2">
+<button class="p-2 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="material-icons text-sm">chevron_left</span>
+</button>
+<button class="p-2 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="material-icons text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-blue-50 dark:bg-blue-900/10 p-6 rounded-2xl border border-blue-100 dark:border-blue-800/50 flex items-start gap-4">
+<div class="bg-primary text-white p-3 rounded-xl shadow-md">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div>
+<h3 class="font-black text-lg">Invoicing Support</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Need a custom consolidated invoice for multiple orders or VAT certificates? Contact our finance desk directly.</p>
+<button class="mt-4 text-primary font-bold text-sm flex items-center gap-1 hover:gap-2 transition-all">
+                                Open Billing Support <span class="material-icons text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="bg-slate-100 dark:bg-slate-800/50 p-6 rounded-2xl flex flex-col justify-center">
+<div class="flex items-center justify-between mb-4">
+<h4 class="font-bold text-sm uppercase tracking-widest text-slate-500">Auto-Download Settings</h4>
+<div class="w-10 h-5 bg-primary rounded-full relative cursor-pointer">
+<div class="absolute right-0.5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+<p class="text-xs text-slate-500 italic">Automatically email PDF invoices to <strong>accounting@obi-industries.ng</strong> on order completion.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

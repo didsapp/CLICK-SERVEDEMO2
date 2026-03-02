@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About Skywhale | Fueling Nigeria's Growth</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "accent-yellow": "#fbbf24",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .map-dot { position: absolute; width: 12px; height: 12px; background-color: #137fec; border-radius: 50%; }
+        .map-dot::after {
+            content: '';
+            position: absolute;
+            width: 100%; height: 100%;
+            background-color: inherit;
+            border-radius: 50%;
+            animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+        @keyframes ping {
+            75%, 100% { transform: scale(2.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 font-display transition-colors duration-300">
+<!-- Navigation -->
+<nav class="sticky top-0 z-50 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-icons text-white">sailing</span>
+</div>
+<span class="text-2xl font-800 tracking-tight text-primary">SKYWHALE</span>
+</div>
+<div class="hidden md:flex items-center gap-8 font-medium">
+<a class="hover:text-primary transition-colors" href="#">Marketplace</a>
+<a class="text-primary underline underline-offset-8" href="#">About Us</a>
+<a class="hover:text-primary transition-colors" href="#">Suppliers</a>
+<a class="hover:text-primary transition-colors" href="#">Contact</a>
+<button class="bg-primary text-white px-6 py-2.5 rounded-lg font-bold hover:shadow-lg hover:shadow-primary/30 transition-all">Get Started</button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative min-h-[70vh] flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Industrial Diesel Logistics" class="w-full h-full object-cover" data-alt="Industrial diesel storage tanks under a blue sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfeC37LhiB20alxLc4N894UxY_6FHnT1TIN8iWVfmFW0gxpXHac1vktGFw6dIn0lAh0h8BvN5gHcPddO1ULV745DzrVldOpbNFUPRz-aC9LHEYfhenViNORp9HqygAznO7r0GBz-PZBR5pHy2SJ0L5pmkNFu_Zo_sHJNjvLA9pt-lHPIhO4VNBfhP0OujUrHCnT4vaTm0cCRNn-GmY2tv7ypwabcwELSFddFAs4NO3RJK0XwbZCeWM4YXyEtcgV-ig7lx5HCYH_wg"/>
+<div class="absolute inset-0 bg-gradient-to-r from-background-dark/90 via-background-dark/60 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-7xl mx-auto px-6 py-20">
+<div class="max-w-2xl">
+<span class="inline-block py-1 px-3 rounded-full bg-primary/20 border border-primary/30 text-primary text-sm font-bold mb-6 tracking-wider uppercase">Our Mission</span>
+<h1 class="text-5xl md:text-7xl font-800 text-white mb-6 leading-tight">Redefining Fuel Logistics in Nigeria</h1>
+<p class="text-xl text-slate-300 mb-10 leading-relaxed">Skywhale Click &amp; Serve is the digital backbone for diesel procurement, connecting high-demand businesses with verified, reliable suppliers across the federation.</p>
+<div class="flex flex-wrap gap-4">
+<a class="bg-primary text-white px-8 py-4 rounded-xl font-bold flex items-center gap-2 hover:translate-y-[-2px] transition-all" href="#impact">
+                        Explore Our Impact <span class="material-icons">arrow_downward</span>
+</a>
+<a class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 py-4 rounded-xl font-bold hover:bg-white/20 transition-all" href="#">
+                        View Supplier Network
+                    </a>
+</div>
+</div>
+</div>
+</header>
+<!-- Problem vs Solution Section -->
+<section class="py-24 bg-white dark:bg-background-dark">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-800 mb-4">Bridging the Logistics Gap</h2>
+<p class="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">We identified the bottlenecks slowing down Nigerian industries and built a platform to solve them once and for all.</p>
+</div>
+<div class="grid lg:grid-cols-2 gap-8">
+<!-- Problem -->
+<div class="bg-slate-50 dark:bg-slate-900 p-8 md:p-12 rounded-2xl border border-slate-200 dark:border-slate-800">
+<div class="w-14 h-14 bg-red-100 text-red-600 rounded-xl flex items-center justify-center mb-8">
+<span class="material-icons text-3xl">warning_amber</span>
+</div>
+<h3 class="text-2xl font-800 mb-6 text-slate-900 dark:text-white">The Traditional Struggle</h3>
+<ul class="space-y-6">
+<li class="flex items-start gap-4">
+<span class="material-icons text-red-500 mt-1">cancel</span>
+<div>
+<h4 class="font-bold">Manual Procurement</h4>
+<p class="text-slate-500 dark:text-slate-400">Tedious phone calls and physical negotiations leading to wasted executive hours.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-icons text-red-500 mt-1">cancel</span>
+<div>
+<h4 class="font-bold">Opaque Pricing</h4>
+<p class="text-slate-500 dark:text-slate-400">Hidden margins and middleman fees that inflate the cost of doing business.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-icons text-red-500 mt-1">cancel</span>
+<div>
+<h4 class="font-bold">Unreliable Quality</h4>
+<p class="text-slate-500 dark:text-slate-400">Risk of adulterated fuel from unverified suppliers damaging critical equipment.</p>
+</div>
+</li>
+</ul>
+</div>
+<!-- Solution -->
+<div class="bg-primary p-8 md:p-12 rounded-2xl border border-primary shadow-2xl shadow-primary/20 text-white">
+<div class="w-14 h-14 bg-white/20 text-white rounded-xl flex items-center justify-center mb-8">
+<span class="material-icons text-3xl">rocket_launch</span>
+</div>
+<h3 class="text-2xl font-800 mb-6">The Skywhale Advantage</h3>
+<ul class="space-y-6">
+<li class="flex items-start gap-4">
+<span class="material-icons text-accent-yellow mt-1">check_circle</span>
+<div>
+<h4 class="font-bold">Instant Marketplace</h4>
+<p class="text-blue-100">Click and serve. Access multiple verified quotes in under 10 minutes from our mobile app.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-icons text-accent-yellow mt-1">check_circle</span>
+<div>
+<h4 class="font-bold">Verified Suppliers</h4>
+<p class="text-blue-100">Every vendor undergoes a rigorous 5-step vetting process including physical site audits.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-icons text-accent-yellow mt-1">check_circle</span>
+<div>
+<h4 class="font-bold">Competitive Bidding</h4>
+<p class="text-blue-100">Market-driven pricing that ensures you get the best rates available in your specific region.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Map Section -->
+<section class="py-24 bg-background-light dark:bg-slate-900/50">
+<div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-16">
+<div class="lg:w-1/2">
+<span class="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">National Coverage</span>
+<h2 class="text-4xl font-800 mb-6 leading-tight">Serving Nigeria's Industrial Hubs</h2>
+<p class="text-lg text-slate-500 dark:text-slate-400 mb-8 leading-relaxed">From the tech hubs of Lagos to the manufacturing giants in Kano, Skywhale's network ensures that no business stays in the dark due to fuel shortages.</p>
+<div class="grid grid-cols-2 gap-6">
+<div class="p-4 bg-white dark:bg-slate-800 rounded-xl shadow-sm">
+<div class="text-2xl font-800 text-primary mb-1">24+</div>
+<div class="text-sm font-medium opacity-70 uppercase tracking-tighter">Active States</div>
+</div>
+<div class="p-4 bg-white dark:bg-slate-800 rounded-xl shadow-sm">
+<div class="text-2xl font-800 text-primary mb-1">500+</div>
+<div class="text-sm font-medium opacity-70 uppercase tracking-tighter">Logistics Partners</div>
+</div>
+</div>
+</div>
+<div class="lg:w-1/2 w-full flex justify-center">
+<div class="relative w-full max-w-[500px] aspect-square bg-white dark:bg-slate-800 rounded-full border-8 border-slate-100 dark:border-slate-700 flex items-center justify-center p-8 overflow-hidden">
+<!-- Placeholder SVG for Nigeria Map -->
+<svg class="w-full h-auto opacity-20 dark:opacity-30 fill-primary" data-location="Nigeria" viewbox="0 0 500 400">
+<path d="M100 50 L400 50 L450 200 L400 350 L100 350 L50 200 Z"></path>
+</svg>
+<!-- Pings representing active cities -->
+<!-- Lagos -->
+<div class="map-dot" style="top: 75%; left: 25%;"></div>
+<!-- Abuja -->
+<div class="map-dot" style="top: 45%; left: 50%;"></div>
+<!-- Port Harcourt -->
+<div class="map-dot" style="top: 85%; left: 55%;"></div>
+<!-- Kano -->
+<div class="map-dot" style="top: 15%; left: 60%;"></div>
+<!-- Ibadan -->
+<div class="map-dot" style="top: 68%; left: 28%;"></div>
+<div class="absolute bottom-10 bg-white dark:bg-slate-700 px-4 py-2 rounded-full shadow-lg border border-slate-200 dark:border-slate-600 flex items-center gap-2">
+<span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+<span class="text-xs font-bold uppercase tracking-tight">Real-time deliveries active</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Impact Dashboard -->
+<section class="py-12 bg-primary text-white" id="impact">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center divide-y md:divide-y-0 md:divide-x divide-white/20">
+<div class="py-6 md:py-0">
+<div class="text-4xl md:text-5xl font-800 text-accent-yellow mb-2">15%</div>
+<p class="text-lg font-medium opacity-80 uppercase tracking-wide">Average Savings</p>
+<p class="text-xs mt-2 opacity-60">Per delivery vs market average</p>
+</div>
+<div class="py-6 md:py-0">
+<div class="text-4xl md:text-5xl font-800 text-accent-yellow mb-2">10,000+</div>
+<p class="text-lg font-medium opacity-80 uppercase tracking-wide">Deliveries Completed</p>
+<p class="text-xs mt-2 opacity-60">Verified successful transactions</p>
+</div>
+<div class="py-6 md:py-0">
+<div class="text-4xl md:text-5xl font-800 text-accent-yellow mb-2">20%</div>
+<p class="text-lg font-medium opacity-80 uppercase tracking-wide">CO2 Reduction</p>
+<p class="text-xs mt-2 opacity-60">Via optimized delivery routing</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Team Section -->
+<section class="py-24 bg-white dark:bg-background-dark">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+<div>
+<h2 class="text-4xl font-800 mb-4">The Visionaries</h2>
+<p class="text-slate-500 dark:text-slate-400 max-w-xl">A team of logistics experts, engineers, and supply chain veterans dedicated to powering Nigeria's future.</p>
+</div>
+<button class="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all">
+                    Join Our Team <span class="material-icons">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Team Member 1 -->
+<div class="group">
+<div class="relative mb-6 overflow-hidden rounded-2xl bg-slate-100 aspect-[4/5]">
+<img alt="CEO" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Professional man in a business suit smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2eAYfq8N_JFln2LFX1jmzLxNLy5QOT77LEbxB3azohQAUNf5svQQ3PmjSxdjnIa2WOkMxaSwWCADI24zG_3Xqoqfki1OrAMFNlogGYXzvRfX-Jm2g9ocKsKuyNXLoRQMlUQMcZ03YQbzmeXiejFLpUcTDxjhaqKgeK-4imq3tejAvhjmp_1tnFWTqQfjjicRC76qkc6gLsrp25v9KnxV9yVAP2LnbRbZSHa4bIJqf6xNxombTd7Im7H2KBH30_1CPDKca9kpa8Yc"/>
+<div class="absolute bottom-4 left-4 right-4 flex gap-2 translate-y-12 group-hover:translate-y-0 transition-transform duration-300">
+<a class="w-10 h-10 bg-white/90 backdrop-blur rounded-lg flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors" href="#">
+<span class="material-icons text-sm">link</span>
+</a>
+</div>
+</div>
+<h4 class="text-xl font-bold">Chidi Okoro</h4>
+<p class="text-primary text-sm font-bold uppercase tracking-tighter">Founder &amp; CEO</p>
+</div>
+<!-- Team Member 2 -->
+<div class="group">
+<div class="relative mb-6 overflow-hidden rounded-2xl bg-slate-100 aspect-[4/5]">
+<img alt="COO" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Professional woman in business attire looking forward" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAi08aIRhb7nv__tBhVH5RJg38wYDd6et5uV-7DL_4-7hXAAmXNOxOJHL3_VjJKQb0ulSgqe1ZjT3mYZMsucMtsKC5b15KCUj0A4Is8ZJxFvGlIkxd7izaStT_ghW0goYqcb93XGd6xgPHBvMjbPSqnPeWsBf1yo_1Zz6eXstg0Lmfa-Stp3YC4_gUaIbsRyz-S3ykwuC4Mj13q_ku9ZIav_8yD11OFT0I0Me917oYZ1T3E6x93TLMaCR8W07jF3Zv5Ft90zQY0gsI"/>
+<div class="absolute bottom-4 left-4 right-4 flex gap-2 translate-y-12 group-hover:translate-y-0 transition-transform duration-300">
+<a class="w-10 h-10 bg-white/90 backdrop-blur rounded-lg flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors" href="#">
+<span class="material-icons text-sm">link</span>
+</a>
+</div>
+</div>
+<h4 class="text-xl font-bold">Amina Yusuf</h4>
+<p class="text-primary text-sm font-bold uppercase tracking-tighter">Chief Operations Officer</p>
+</div>
+<!-- Team Member 3 -->
+<div class="group">
+<div class="relative mb-6 overflow-hidden rounded-2xl bg-slate-100 aspect-[4/5]">
+<img alt="CTO" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Young man in smart casual clothing with glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvS_O4FSWK5nUh-GErUnPHh7p34SJ03XiyYjXZ5nt9NHCpMzHxMfs84I-XN5sy7WmKSs-kijaSzsg38aHfGtiJujsuHdkA0oXL5kx_j-OhK261Vd381sC9ySl-WPtEv7cETlAO4HE7kuLd4usOl9QeUPzAhwebp0mT5uayWgQuVZ9PZ3wxmg3audgtoL_FM8vghEpsBGYoP7cPqTU18F2oI8pX_d00_9Lbl6YvxKIrwTXCNSeGPj6tGVb-ow69XObxXmbeP1mfrxo"/>
+<div class="absolute bottom-4 left-4 right-4 flex gap-2 translate-y-12 group-hover:translate-y-0 transition-transform duration-300">
+<a class="w-10 h-10 bg-white/90 backdrop-blur rounded-lg flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors" href="#">
+<span class="material-icons text-sm">link</span>
+</a>
+</div>
+</div>
+<h4 class="text-xl font-bold">Tunde Adeyemi</h4>
+<p class="text-primary text-sm font-bold uppercase tracking-tighter">Chief Technology Officer</p>
+</div>
+<!-- Team Member 4 -->
+<div class="group">
+<div class="relative mb-6 overflow-hidden rounded-2xl bg-slate-100 aspect-[4/5]">
+<img alt="Logistics Lead" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Smiling professional woman in modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxcgqDepo1tRujbMpriOKyvpEBYMvL03k78scl9_vxK38U-mcRWn_brgb5ZbOWaje_rIsPYozpJXzHRiqqsS3i8DJf9aPRa3_-QzRKNRAk0fQJ3W1zaCopro5zlHeeXav5QX8h2JDoefV8SPGW2Q04dTTyJ1AEQx-UpOZuX716rOJuiO4DNmj6lWwPOJgXFVgOPis2dT0_7GmnxWTFXZl2c37aTu7i3M_kE-_Ke25k18vppWrlfUHt4dfnC5LjI6HmnGJahdHLFfw"/>
+<div class="absolute bottom-4 left-4 right-4 flex gap-2 translate-y-12 group-hover:translate-y-0 transition-transform duration-300">
+<a class="w-10 h-10 bg-white/90 backdrop-blur rounded-lg flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors" href="#">
+<span class="material-icons text-sm">link</span>
+</a>
+</div>
+</div>
+<h4 class="text-xl font-bold">Blessing Efosa</h4>
+<p class="text-primary text-sm font-bold uppercase tracking-tighter">Head of Logistics</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-slate-900 text-white pt-20 pb-10">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+<div class="col-span-1 lg:col-span-1">
+<div class="flex items-center gap-2 mb-8">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-icons text-white text-sm">sailing</span>
+</div>
+<span class="text-xl font-800 tracking-tight text-white">SKYWHALE</span>
+</div>
+<p class="text-slate-400 mb-8 leading-relaxed">Connecting Nigerian businesses with energy, transparency, and efficiency through digital innovation.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-colors" href="#"><span class="material-icons text-sm">facebook</span></a>
+<a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-colors" href="#"><span class="material-icons text-sm">public</span></a>
+</div>
+</div>
+<div>
+<h5 class="text-lg font-bold mb-8">Quick Links</h5>
+<ul class="space-y-4 text-slate-400">
+<li><a class="hover:text-primary transition-colors" href="#">Marketplace</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Supply with Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Company Blog</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Price Index</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-lg font-bold mb-8">Support</h5>
+<ul class="space-y-4 text-slate-400">
+<li><a class="hover:text-primary transition-colors" href="#">Help Center</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Supplier Guidelines</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-lg font-bold mb-8">Contact Us</h5>
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<span class="material-icons text-primary">place</span>
+<p class="text-sm text-slate-400">12, Admiralty Way, Lekki Phase 1, Lagos, Nigeria</p>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-icons text-primary">email</span>
+<p class="text-sm text-slate-400">info@skywhale.ng</p>
+</div>
+<a class="inline-flex items-center gap-2 bg-[#25D366] text-white px-6 py-3 rounded-xl font-bold hover:brightness-110 transition-all w-full justify-center" href="#">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.887.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884 0 2.225.586 3.891 1.577 5.407l-.999 3.646 3.911-.994zm11.367-7.403c-.315-.158-1.86-.918-2.149-1.023-.289-.104-.499-.158-.71.158-.21.316-.813 1.023-.996 1.234-.183.21-.367.236-.682.079-.315-.158-1.33-.49-2.53-1.562-.933-.833-1.562-1.863-1.745-2.179-.183-.316-.02-.486.138-.643.141-.142.315-.368.473-.553.158-.185.21-.316.316-.526.105-.21.053-.395-.026-.553-.079-.158-.71-1.711-.973-2.342-.256-.615-.516-.531-.71-.541-.183-.01-.394-.011-.605-.011s-.553.079-.842.395c-.29.316-1.105 1.079-1.105 2.632 0 1.553 1.131 3.053 1.289 3.264.158.21 2.226 3.4 5.391 4.766.753.325 1.341.519 1.8.663.756.24 1.445.206 1.99.125.607-.09 1.86-.763 2.122-1.474.263-.711.263-1.316.184-1.448-.079-.132-.289-.21-.604-.368z"></path></svg>
+                            Chat on WhatsApp
+                        </a>
+</div>
+</div>
+</div>
+<div class="border-t border-white/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
+<p class="text-slate-500 text-sm">© 2024 Skywhale Click &amp; Serve. All rights reserved.</p>
+<div class="flex items-center gap-4">
+<img alt="Visa" class="h-6 opacity-50 grayscale hover:grayscale-0 transition-all" data-alt="Visa payment icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBChLGhafGDHTF-aafCvjyp6mi3lj3Q3heWKiLXBCy0HTluz06c6x2KZHSyhSN-Bb0AoKJgxbeAJnowvAA_Mob1-qyk_xr8F8q150Sj5XEMTL6LWH5J0bxznOEiltmFBzVqcozitlArVKtXD5ZHFop19PfRrjgyrKppf6bT5Jmck8T2Av11aWdBeEayh_u7fx9CukMVEBuC88x3f7D2nuSRP-dL-QrLugXF-cQ_WjJBOk26lG_Fa-bIdNI6ubiJbfC8CKcAhqr69hg"/>
+<img alt="Mastercard" class="h-6 opacity-50 grayscale hover:grayscale-0 transition-all" data-alt="Mastercard payment icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALBJM9NC4ifNO2DuqZWUcfXwe0nuAHKrwv0EMmr9ChkWcr8d__ZocrMzHCcB0atbP7TNMELI5ni-InZt6RLJJtMyyKvUZ75MwIQX28GzK52DfTbxGQ6Pf3_NKmznzTDGBfn0r_k02V_P1BHgdv1kl54SowMI2K8sT8VHHe51-z5BeUb7dfzOSviNCVdXNTThpN_vAWTGGDz3v4Eu_2WqMHNVZajaHlXddaklJj42ZKaWxwoJvv9kxLaZMyj8JU66-5Wh6bld0hsiU"/>
+</div>
+</div>
+</div>
+</footer>
+<!-- WhatsApp Floating Button -->
+<a class="fixed bottom-6 right-6 w-16 h-16 bg-[#25D366] rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-[100]" href="#">
+<svg class="w-8 h-8 fill-white" viewbox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.887.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884 0 2.225.586 3.891 1.577 5.407l-.999 3.646 3.911-.994zm11.367-7.403c-.315-.158-1.86-.918-2.149-1.023-.289-.104-.499-.158-.71.158-.21.316-.813 1.023-.996 1.234-.183.21-.367.236-.682.079-.315-.158-1.33-.49-2.53-1.562-.933-.833-1.562-1.863-1.745-2.179-.183-.316-.02-.486.138-.643.141-.142.315-.368.473-.553.158-.185.21-.316.316-.526.105-.21.053-.395-.026-.553-.079-.158-.71-1.711-.973-2.342-.256-.615-.516-.531-.71-.541-.183-.01-.394-.011-.605-.011s-.553.079-.842.395c-.29.316-1.105 1.079-1.105 2.632 0 1.553 1.131 3.053 1.289 3.264.158.21 2.226 3.4 5.391 4.766.753.325 1.341.519 1.8.663.756.24 1.445.206 1.99.125.607-.09 1.86-.763 2.122-1.474.263-.711.263-1.316.184-1.448-.079-.132-.289-.21-.604-.368z"></path></svg>
+</a>
+</body></html>

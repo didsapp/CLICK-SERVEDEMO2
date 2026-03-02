@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Credit Manager | Skywhale Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#137fec",
+                "background-light": "#f6f7f8",
+                "background-dark": "#101922",
+              },
+              fontFamily: {
+                "display": ["Manrope"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Manrope', sans-serif; }
+        .sidebar-item-active {
+            background: rgba(19, 127, 236, 0.15);
+            border-left: 4px solid #137fec;
+            color: #137fec;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #137fec;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(19, 127, 236, 0.3);
+            margin-top: -8px;
+        }
+        input[type="range"]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            background: #e2e8f0;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-200">
+<div class="flex min-h-screen overflow-hidden">
+<aside class="w-64 bg-slate-900 text-slate-400 flex flex-col shrink-0 border-r border-slate-800">
+<div class="p-6 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-icons">waves</span>
+</div>
+<div>
+<h1 class="text-white font-bold text-lg leading-none">Skywhale</h1>
+<p class="text-[10px] uppercase tracking-widest font-semibold text-primary/80">Command Center</p>
+</div>
+</div>
+<nav class="flex-1 mt-4 px-3 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-slate-800 hover:text-white transition-colors" href="#">
+<span class="material-icons text-xl">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-slate-800 hover:text-white transition-colors" href="#">
+<span class="material-icons text-xl">verified_user</span>
+<span class="text-sm font-medium">User Approvals</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-slate-800 hover:text-white transition-colors" href="#">
+<span class="material-icons text-xl">shopping_cart</span>
+<span class="text-sm font-medium">Orders</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-slate-800 hover:text-white transition-colors" href="#">
+<span class="material-icons text-xl">account_balance_wallet</span>
+<span class="text-sm font-medium">Payments</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg sidebar-item-active text-white" href="#">
+<span class="material-icons text-xl">credit_card</span>
+<span class="text-sm font-medium">Credit Manager</span>
+<span class="ml-auto bg-primary text-white text-[10px] px-2 py-0.5 rounded-full">5</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-slate-800 hover:text-white transition-colors" href="#">
+<span class="material-icons text-xl">receipt_long</span>
+<span class="text-sm font-medium">Invoices</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-slate-800 hover:text-white transition-colors" href="#">
+<span class="material-icons text-xl">analytics</span>
+<span class="text-sm font-medium">Analytics</span>
+</a>
+</nav>
+<div class="p-4 mt-auto border-t border-slate-800 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-slate-800 hover:text-white transition-colors" href="#">
+<span class="material-icons text-xl">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+<div class="flex items-center gap-3 px-4 py-3 mt-2">
+<img class="w-8 h-8 rounded-full border-2 border-slate-700 object-cover" data-alt="Admin profile photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_cF_fM_xrmhOKVWRC2PzlNTu_qPIu49PGu1WlutKU0g83bRLARQq2gRA_z2jFwvG3HjMqb0CjOm4tu5l-pWyCDKylN0uPQA5UlT_Ce4OFUfsu5tqP6aoayzdeSoR337fVkIiFTL2A_-flhmDaUxXJHlgYb0b6MKjYFV16_bdVv39Eu2MvhZgvGrXUY-ZWwoDbJzxaWKwV6itFyxreZu1lUnbuyFcaTsPnowYA74xnIVyZP0InCDw4nVOZCl5l5uJ1RJXMZc9coxg"/>
+<div class="flex-1 overflow-hidden">
+<p class="text-xs font-bold text-white truncate">Chinedu Okafor</p>
+<p class="text-[10px] truncate text-slate-500 uppercase">Super Admin</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-screen overflow-hidden bg-background-light dark:bg-background-dark">
+<header class="h-16 flex items-center justify-between px-8 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shrink-0">
+<div class="flex items-center gap-4 bg-slate-100 dark:bg-slate-800 px-4 py-2 rounded-lg w-96">
+<span class="material-icons text-slate-400 text-lg">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full outline-none" placeholder="Search businesses or credit IDs..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="relative p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+<span class="material-icons">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-900"></span>
+</button>
+<div class="h-8 w-[1px] bg-slate-200 dark:bg-slate-800 mx-2"></div>
+<div class="flex gap-2">
+<button class="bg-primary/10 text-primary px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 hover:bg-primary/20 transition-all">
+<span class="material-icons text-sm">history</span>
+                        Audit Logs
+                    </button>
+</div>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto p-8 space-y-8">
+<div class="flex justify-between items-end">
+<div>
+<h2 class="text-2xl font-extrabold tracking-tight">Credit Approval &amp; Limit Manager</h2>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Manage B2B credit facilities and exposure limits.</p>
+</div>
+<div class="flex gap-3">
+<div class="bg-white dark:bg-slate-900 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-800">
+<p class="text-[10px] font-bold text-slate-400 uppercase">Total Exposure</p>
+<p class="text-lg font-bold">₦1.24B</p>
+</div>
+<div class="bg-white dark:bg-slate-900 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-800">
+<p class="text-[10px] font-bold text-slate-400 uppercase">Utilized Credit</p>
+<p class="text-lg font-bold text-amber-500">₦842.5M</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+<div class="lg:col-span-2 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="p-6 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
+<h3 class="font-bold text-lg">Pending Requests</h3>
+<div class="flex gap-2">
+<span class="px-2 py-1 rounded bg-amber-100 dark:bg-amber-900/30 text-amber-600 text-[10px] font-bold">5 ACTION REQUIRED</span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 border-b border-slate-100 dark:border-slate-800">
+<th class="px-6 py-4 text-[10px] uppercase tracking-wider font-bold">Business Name</th>
+<th class="px-6 py-4 text-[10px] uppercase tracking-wider font-bold">Tier</th>
+<th class="px-6 py-4 text-[10px] uppercase tracking-wider font-bold">Requested</th>
+<th class="px-6 py-4 text-[10px] uppercase tracking-wider font-bold">Credit Score</th>
+<th class="px-6 py-4 text-[10px] uppercase tracking-wider font-bold text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr class="hover:bg-primary/5 cursor-pointer transition-colors bg-primary/5">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-slate-200 dark:bg-slate-700 flex items-center justify-center font-bold text-xs">BT</div>
+<div>
+<p class="text-sm font-bold">Bauchi Transporters</p>
+<p class="text-[10px] text-slate-500">Reg: RC-992834</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4"><span class="px-2 py-1 rounded-full bg-blue-100 text-blue-700 text-[10px] font-bold">Tier 2</span></td>
+<td class="px-6 py-4 text-sm font-bold">₦25,000,000</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-12 h-1.5 bg-slate-200 rounded-full">
+<div class="w-4/5 h-full bg-green-500 rounded-full"></div>
+</div>
+<span class="text-xs font-bold text-green-600">820</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="material-icons text-primary">chevron_right</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-slate-200 dark:bg-slate-700 flex items-center justify-center font-bold text-xs">KE</div>
+<div>
+<p class="text-sm font-bold">Kaduna Electric</p>
+<p class="text-[10px] text-slate-500">Reg: RC-112003</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4"><span class="px-2 py-1 rounded-full bg-purple-100 text-purple-700 text-[10px] font-bold">Tier 3</span></td>
+<td class="px-6 py-4 text-sm font-bold">₦150,000,000</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-12 h-1.5 bg-slate-200 rounded-full">
+<div class="w-3/5 h-full bg-amber-500 rounded-full"></div>
+</div>
+<span class="text-xs font-bold text-amber-600">645</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<span class="material-icons text-slate-300">chevron_right</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="lg:col-span-1 space-y-6">
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="p-6 bg-slate-50 dark:bg-slate-800/50 border-b border-slate-100 dark:border-slate-800">
+<p class="text-[10px] font-bold text-primary uppercase tracking-widest mb-1">Detailed Review</p>
+<h3 class="font-bold text-xl">Bauchi Transporters</h3>
+<p class="text-xs text-slate-500">ID: CR-882-X</p>
+</div>
+<div class="p-6 space-y-6">
+<div class="grid grid-cols-2 gap-4">
+<div class="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg">
+<p class="text-[10px] font-bold text-slate-400 uppercase">Avg Monthly Buy</p>
+<p class="text-sm font-bold">₦18.4M</p>
+</div>
+<div class="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg">
+<p class="text-[10px] font-bold text-slate-400 uppercase">Payback Ratio</p>
+<p class="text-sm font-bold text-green-500">98.2%</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<label class="text-sm font-bold">Assigned Credit Limit</label>
+<span class="text-lg font-black text-primary">₦22.5M</span>
+</div>
+<input class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-primary" max="50" min="0" step="0.5" type="range" value="22.5"/>
+<div class="flex justify-between text-[10px] font-bold text-slate-400 uppercase">
+<span>₦0</span>
+<span>₦50M Max</span>
+</div>
+</div>
+<div class="space-y-3 pt-4 border-t border-slate-100 dark:border-slate-800">
+<div class="flex justify-between text-sm">
+<span class="text-slate-500">Repayment Period</span>
+<span class="font-bold">30 Days</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-500">Interest Rate</span>
+<span class="font-bold">2.5% Monthly</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3 pt-2">
+<button class="bg-primary text-white py-3 rounded-lg font-bold text-sm shadow-lg shadow-primary/20 hover:brightness-110">Approve Limit</button>
+<button class="border border-red-200 text-red-500 py-3 rounded-lg font-bold text-sm hover:bg-red-50">Reject</button>
+</div>
+</div>
+</div>
+<div class="bg-slate-900 text-white p-6 rounded-xl relative overflow-hidden">
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-4 text-amber-400">
+<span class="material-icons text-sm">security</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Risk Analysis Engine</span>
+</div>
+<p class="text-sm font-medium mb-4">"Bauchi Transporters shows high cash flow stability, but seasonal volatility in Q4 needs monitoring."</p>
+<div class="flex items-center gap-2 text-xs text-slate-400">
+<span class="material-icons text-xs">verified</span>
+                                CAC Verified
+                                <span class="mx-1">•</span>
+<span class="material-icons text-xs">account_balance</span>
+                                BVN Matched
+                            </div>
+</div>
+<div class="absolute -right-4 -bottom-4 w-24 h-24 bg-primary/20 rounded-full blur-2xl"></div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-bold text-lg">Automated Credit Policies</h3>
+<button class="text-primary text-xs font-bold hover:underline">Edit Global Rules</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="flex items-center gap-4 p-4 border border-slate-100 dark:border-slate-800 rounded-lg">
+<div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center">
+<span class="material-icons">auto_awesome</span>
+</div>
+<div>
+<p class="text-xs font-bold">Auto-approval</p>
+<p class="text-[10px] text-slate-500">Up to ₦5M for Tier 1 verified</p>
+</div>
+<div class="ml-auto">
+<div class="w-8 h-4 bg-primary rounded-full relative">
+<div class="absolute right-0.5 top-0.5 w-3 h-3 bg-white rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 p-4 border border-slate-100 dark:border-slate-800 rounded-lg">
+<div class="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-600 flex items-center justify-center">
+<span class="material-icons">gavel</span>
+</div>
+<div>
+<p class="text-xs font-bold">Late Penalty</p>
+<p class="text-[10px] text-slate-500">0.5% daily after 3 days</p>
+</div>
+<div class="ml-auto">
+<div class="w-8 h-4 bg-primary rounded-full relative">
+<div class="absolute right-0.5 top-0.5 w-3 h-3 bg-white rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 p-4 border border-slate-100 dark:border-slate-800 rounded-lg">
+<div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 flex items-center justify-center">
+<span class="material-icons">block</span>
+</div>
+<div>
+<p class="text-xs font-bold">Defaulter Block</p>
+<p class="text-[10px] text-slate-500">Freeze account after 14 days</p>
+</div>
+<div class="ml-auto">
+<div class="w-8 h-4 bg-slate-300 rounded-full relative">
+<div class="absolute left-0.5 top-0.5 w-3 h-3 bg-white rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

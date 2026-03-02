@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About Skywhale | Mobile Logistics Marketplace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "accent-yellow": "#ffb400",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden">
+<!-- Mobile Header -->
+<header class="sticky top-0 z-50 flex items-center justify-between bg-white dark:bg-slate-900 px-4 py-3 border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-2">
+<div class="text-primary">
+<svg class="size-6" fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 4C25.7818 14.2173 33.7827 22.2182 44 24C33.7827 25.7818 25.7818 33.7827 24 44C22.2182 33.7827 14.2173 25.7818 4 24C14.2173 22.2182 22.2182 14.2173 24 4Z"></path>
+</svg>
+</div>
+<h1 class="text-lg font-extrabold tracking-tight text-slate-900 dark:text-white uppercase">Skywhale</h1>
+</div>
+<div class="flex items-center gap-3">
+<button class="bg-primary text-white text-xs font-bold px-4 py-2 rounded-lg shadow-sm">ORDER DIESEL</button>
+<button class="p-2 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<main class="max-w-md mx-auto pb-24">
+<!-- Hero Section -->
+<section class="relative h-[420px] flex flex-col justify-end p-6 overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Modern diesel delivery truck on a highway" style="background-image: linear-gradient(to bottom, rgba(16, 25, 34, 0.2), rgba(16, 25, 34, 0.9)), url('https://lh3.googleusercontent.com/aida-public/AB6AXuDt_tiLPZvN4CWmUHLkEFP0VvRnpdvCkTVWa0p1o3fvIuagwJzi_8XbgHB-LpULxp449FVRAsvaLM0AF4PiKP9Yq6Wc6PTfnBkOXb1RSrca6x1TebHN92WkNXVZ7VuUMplh-CaSFFzsfmoYfD7YX8vXcwb23rju3dhQCtCHbhaIDij2_KpDze04oLgjLhNFLuOW7GupmFJdp_dcJ3YQc6sIoOvcpq6cDYIExZtajxfz_SJ5xQh5tDtyAh12qkMFJkoOWVfWxokWtbU');">
+</div>
+<div class="relative z-10 space-y-3">
+<span class="inline-block bg-accent-yellow text-slate-900 text-[10px] font-bold tracking-widest uppercase px-2 py-1 rounded">OUR MISSION</span>
+<h2 class="text-3xl font-extrabold text-white leading-tight">Fuelling Nigeria’s Growth</h2>
+<p class="text-slate-300 text-sm leading-relaxed">
+                    We are building a seamless diesel logistics marketplace, ensuring reliable energy delivery for every business across the nation.
+                </p>
+<button class="mt-4 flex items-center gap-2 text-white font-semibold group">
+                    Explore our journey
+                    <span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Problem vs Solution -->
+<section class="px-4 py-10 space-y-6">
+<h3 class="text-xl font-bold text-center">Rethinking Diesel Logistics</h3>
+<!-- Problem Card -->
+<div class="bg-white dark:bg-slate-800 p-5 rounded-xl border-l-4 border-red-500 shadow-sm space-y-3">
+<div class="flex items-center gap-3 text-red-500">
+<span class="material-symbols-outlined">warning</span>
+<h4 class="font-bold">The Problem</h4>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-400">
+                    Opaque pricing, frequent late deliveries, and the risk of fuel theft have plagued the Nigerian industry for decades.
+                </p>
+</div>
+<!-- Solution Card -->
+<div class="bg-primary/5 dark:bg-primary/10 p-5 rounded-xl border-l-4 border-primary shadow-sm space-y-3">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined">verified</span>
+<h4 class="font-bold">Our Solution</h4>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-400">
+                    Transparent live tracking, vetted premium suppliers, and IoT-enabled quality verification for every drop delivered.
+                </p>
+</div>
+</section>
+<!-- Impact Numbers -->
+<section class="bg-slate-900 text-white py-12 px-6">
+<div class="grid grid-cols-2 gap-8">
+<div class="space-y-1">
+<p class="text-3xl font-extrabold text-accent-yellow tracking-tighter">15%</p>
+<p class="text-[10px] uppercase font-bold tracking-widest text-slate-400">Average Savings</p>
+</div>
+<div class="space-y-1">
+<p class="text-3xl font-extrabold text-primary tracking-tighter">50K+</p>
+<p class="text-[10px] uppercase font-bold tracking-widest text-slate-400">Liters Delivered</p>
+</div>
+<div class="space-y-1">
+<p class="text-3xl font-extrabold text-white tracking-tighter">98%</p>
+<p class="text-[10px] uppercase font-bold tracking-widest text-slate-400">On-time Delivery</p>
+</div>
+<div class="space-y-1">
+<p class="text-3xl font-extrabold text-accent-yellow tracking-tighter">12</p>
+<p class="text-[10px] uppercase font-bold tracking-widest text-slate-400">Major Hubs</p>
+</div>
+</div>
+</section>
+<!-- Coverage Map Simplified -->
+<section class="py-12 px-4 space-y-6 text-center">
+<h3 class="text-xl font-bold">Nationwide Coverage</h3>
+<p class="text-sm text-slate-500 max-w-xs mx-auto">Connecting energy hubs from Lagos to Kano with a single tap.</p>
+<div class="relative bg-slate-100 dark:bg-slate-800 rounded-2xl p-4 flex items-center justify-center overflow-hidden">
+<img class="opacity-20 absolute inset-0 object-cover w-full h-full grayscale" data-alt="Stylized map of Nigeria regions" data-location="Nigeria" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyDC07VKPRex5Ysv4A8Y-r--GKYLfrqLFFULGNDIHg-nX9u8JA-afbQN2Sju9LIMRbCkJqa0X41X9SL4VOS2aFAayuRmMOmqi2NZw54wM4wt_Qg8-3ef5G589oEdIdXvQx5TXCNIeqor_WmQz6gSmCaKdb61T6hOTJBlFO44IOxy-OP6Z01dgzKjkAiqJm4X880epITmEkeUDvc69EqUpjPojxgGIlN9BYhLkoskZ1NXmc1-5ev0OeqYWR_WdyG8kfmIRaOnIfBwo"/>
+<div class="relative z-10 w-full aspect-square flex items-center justify-center">
+<!-- Stylized SVG Map Placeholder -->
+<div class="w-48 h-48 border-2 border-primary/20 rounded-full flex items-center justify-center animate-pulse">
+<div class="w-32 h-32 border-4 border-primary/40 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-5xl">location_on</span>
+</div>
+</div>
+</div>
+<div class="absolute bottom-4 left-4 bg-white dark:bg-slate-900 p-2 rounded-lg shadow-lg text-[10px] text-left">
+<div class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-primary"></div> Active Hubs</div>
+<div class="flex items-center gap-1 mt-1"><div class="w-2 h-2 rounded-full bg-accent-yellow"></div> Coming Soon</div>
+</div>
+</div>
+</section>
+<!-- Team Horizontal Scroll -->
+<section class="py-10 bg-white dark:bg-slate-900/50">
+<div class="px-4 flex justify-between items-center mb-6">
+<h3 class="text-xl font-bold">Meet the Leaders</h3>
+<span class="text-xs text-primary font-bold">Swipe →</span>
+</div>
+<div class="flex gap-4 overflow-x-auto px-4 pb-4 hide-scrollbar">
+<!-- Member 1 -->
+<div class="min-w-[180px] space-y-3">
+<div class="aspect-[4/5] rounded-xl overflow-hidden bg-slate-200">
+<img class="w-full h-full object-cover" data-alt="Professional portrait of Skywhale CEO" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZvt3IibnJGAlD6aekCF0bSkeRBUjEpbrEQycpYGQLSmC227NvDvwHYPB35068v1svx6og5c0CwcWerbCM6WeDTH618JxuIVOQeM3KRtjwz6rovQuhV4UlSN7-swsUGa8IYTIVFLQ_UCOapBFcoEET1-uMxUNdLZFNgyCbV7lMlvaHRYsok97UE89J0K32mb-FgdIeF4cXB0Tgsx6pQNa9bBX1_oxxlUe5TeFUceQGw95TA9q2B1iykCtbmamRGVFDehFz5KAtHjc"/>
+</div>
+<div>
+<h5 class="font-bold text-sm">Chidi Okafor</h5>
+<p class="text-xs text-slate-500">Founder &amp; CEO</p>
+</div>
+</div>
+<!-- Member 2 -->
+<div class="min-w-[180px] space-y-3">
+<div class="aspect-[4/5] rounded-xl overflow-hidden bg-slate-200">
+<img class="w-full h-full object-cover" data-alt="Professional portrait of Operations Head" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB57kCavrzSXYU1P50g8xKkSB_SyEyalQ7un1slvqRIKuLbQBx1oHm-SpEwhhCeSG4ci7Wk2WPQmpkuigxBYfbUACHr8v6Id5wibh0hLBoPrFv-LK8QGBJmFl-zKEQLwPmCBcER5koq4Q_UrOfgmTAh8JvC6TZZRUEbsZilge3N29iwaWqpg_HLlc_6IhNR0Od5B-JAD3w8r_nryuJf0gRuj6PGg_1IirVDuoSkxKfuqBOcow8K0jj4gLhYxFWrKYIw5CbWCOow-8c"/>
+</div>
+<div>
+<h5 class="font-bold text-sm">Amina Bello</h5>
+<p class="text-xs text-slate-500">Head of Operations</p>
+</div>
+</div>
+<!-- Member 3 -->
+<div class="min-w-[180px] space-y-3">
+<div class="aspect-[4/5] rounded-xl overflow-hidden bg-slate-200">
+<img class="w-full h-full object-cover" data-alt="Professional portrait of Tech Lead" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCa9bLrBkB9AnrHV8y7msxhbOIkw4FCxrLyPlEd7ORTh8JE7k6iIMFHcyh4hyHRFrSiZwRwh3QM9PjdLPlwgvLve-ObOmMI3j0Ic_wWSX8IAhO2FDNxhIfJ4gsyNhTSqpdRKgc_NngR7rinZlQeJSZRrNLs8toAT0ALoWryvQVAOQ4qtvlCVAndO8075WPR8ewF3CC2w_dai6NWueiPu7_40kbtxAlGLbfZBSIiWYwXafDwzipvVAzUCkhlyh3F7YfSWnyizzJuuC8"/>
+</div>
+<div>
+<h5 class="font-bold text-sm">Tunde Williams</h5>
+<p class="text-xs text-slate-500">CTO</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer Contact CTA -->
+<section class="px-6 py-12 text-center bg-primary text-white">
+<h3 class="text-2xl font-bold mb-4">Ready to fuel up?</h3>
+<p class="text-white/80 text-sm mb-8">Join thousands of Nigerian businesses optimizing their energy costs.</p>
+<div class="flex flex-col gap-3">
+<button class="w-full py-4 bg-white text-primary font-bold rounded-xl shadow-xl">Get Started Now</button>
+<button class="w-full py-4 border border-white/30 text-white font-bold rounded-xl">Contact Sales</button>
+</div>
+</section>
+<!-- SEO/Standard Footer Links -->
+<footer class="p-8 text-center text-slate-400 text-xs space-y-4">
+<div class="flex justify-center gap-6">
+<a href="#">Privacy</a>
+<a href="#">Terms</a>
+<a href="#">Support</a>
+</div>
+<p>© 2024 Skywhale Logistics Limited. All Rights Reserved.</p>
+</footer>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 inset-x-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-6 py-3 flex justify-between items-center z-50">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="text-[10px] font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined text-[24px]">receipt_long</span>
+<span class="text-[10px] font-medium">Orders</span>
+</a>
+<div class="relative -top-8">
+<button class="bg-primary text-white p-4 rounded-full shadow-lg border-4 border-background-light dark:border-background-dark">
+<span class="material-symbols-outlined text-[28px]">local_shipping</span>
+</button>
+</div>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined text-[24px]">info</span>
+<span class="text-[10px] font-medium">About</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined text-[24px]">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</a>
+</nav>
+</body></html>

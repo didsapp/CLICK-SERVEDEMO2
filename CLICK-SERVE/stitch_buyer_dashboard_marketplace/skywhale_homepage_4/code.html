@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Skywhale | Buyer Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#137fec",
+                "accent": "#f9bf07",
+                "background-light": "#f8fafc",
+                "background-dark": "#0f172a",
+                "card-light": "#ffffff",
+                "card-dark": "#1e293b",
+              },
+              fontFamily: {
+                "sans": ["Montserrat", "sans-serif"],
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1rem", "2xl": "1.5rem", "3xl": "2rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Montserrat', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .bottom-nav-blur { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .status-badge { @apply px-2 py-0.5 rounded-full text-[10px] font-bold uppercase; }
+        .delivered { @apply bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400; }
+        .in-transit { @apply bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-sans pb-24">
+<header class="sticky top-0 z-40 bg-white dark:bg-slate-950 px-4 py-4 flex justify-between items-center border-b border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<button class="w-10 h-10 flex items-center justify-center text-slate-600 dark:text-slate-300">
+<span class="material-icons">menu</span>
+</button>
+<div class="flex items-center gap-2">
+<div class="bg-primary p-1.5 rounded-lg">
+<span class="material-icons text-white text-xl">sailing</span>
+</div>
+<span class="text-lg font-800 tracking-tight text-primary">SKYWHALE</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 relative">
+<span class="material-icons text-slate-600 dark:text-slate-300 text-xl">notifications_none</span>
+<span class="absolute top-2.5 right-2.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-950"></span>
+</button>
+</div>
+</header>
+<main class="p-4 space-y-6">
+<section class="space-y-4">
+<div class="bg-primary rounded-3xl p-6 text-white shadow-xl shadow-primary/20 relative overflow-hidden">
+<div class="absolute -right-10 -top-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-xs font-medium opacity-80 uppercase tracking-wider">Wallet Balance</p>
+<h2 class="text-3xl font-800 mt-1">₦2,450,000</h2>
+</div>
+<div class="bg-white/20 p-2 rounded-xl backdrop-blur-md">
+<span class="material-icons">account_balance_wallet</span>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 bg-white text-primary py-2.5 rounded-xl font-700 text-sm">Top Up</button>
+<button class="flex-1 bg-white/20 backdrop-blur-md text-white py-2.5 rounded-xl font-700 text-sm">Transfer</button>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
+<span class="material-icons text-accent">speed</span>
+</div>
+<div>
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Credit Limit</p>
+<p class="text-lg font-800">₦5,000,000</p>
+</div>
+</div>
+<span class="material-icons text-slate-300">chevron_right</span>
+</div>
+<div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+<span class="material-icons text-primary">local_shipping</span>
+</div>
+<div>
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Active Orders</p>
+<p class="text-lg font-800">3 Orders</p>
+</div>
+</div>
+<span class="material-icons text-slate-300">chevron_right</span>
+</div>
+</div>
+</section>
+<section>
+<div class="bg-slate-900 dark:bg-primary/20 rounded-2xl p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg overflow-hidden shrink-0">
+<img alt="Last Supplier" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1BDG7v0fKErZ_D66Ey7qMkgQZ9_blORtndFRQi_mFwlSEV0CAtKUwupxEjfUD2rwMHBZf-j5Yij8hD8qkVrvqD6TdXn46kdEIRpDAjJCPPxUy_PR4lVjQJqUhXm05hxff0akpbiAWDRKN3HLkf2-ED3VAyioaGD2AZZeKIjXBXj-H3y5MfaJz6uh4_Z-_jH2KK0EsZ0RlWA4PTM5QMNfo8sU-xHqOWDavSWNo7aZW06xFEJN20VklM7lA1u6cqfNkedLE0_dbNIc"/>
+</div>
+<div>
+<p class="text-[10px] font-bold text-slate-400 uppercase">Last Purchase</p>
+<p class="text-sm font-700 text-white">Energia Logistics (2,000L)</p>
+</div>
+</div>
+<button class="bg-accent text-slate-900 px-4 py-2 rounded-xl font-800 text-xs flex items-center gap-1.5 shadow-lg shadow-accent/20">
+<span class="material-icons text-sm">refresh</span>
+                    REORDER
+                </button>
+</div>
+</section>
+<section>
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-lg font-800">Recent Orders</h3>
+<a class="text-xs font-bold text-primary" href="#">View All</a>
+</div>
+<div class="space-y-3">
+<div class="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-3">
+<div class="flex gap-3">
+<div class="w-10 h-10 rounded-xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center">
+<span class="material-icons text-slate-400">inventory_2</span>
+</div>
+<div>
+<h4 class="text-sm font-700">ORD-782910</h4>
+<p class="text-[11px] text-slate-500">Oct 24, 2023 • 10:30 AM</p>
+</div>
+</div>
+<span class="status-badge in-transit">In Transit</span>
+</div>
+<div class="flex justify-between items-center pt-3 border-t border-slate-50 dark:border-slate-800">
+<div class="text-xs font-600 text-slate-600 dark:text-slate-400">5,000 Liters - AGO</div>
+<div class="text-sm font-800 text-primary">₦6,225,000</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-3">
+<div class="flex gap-3">
+<div class="w-10 h-10 rounded-xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center">
+<span class="material-icons text-slate-400">inventory_2</span>
+</div>
+<div>
+<h4 class="text-sm font-700">ORD-782894</h4>
+<p class="text-[11px] text-slate-500">Oct 22, 2023 • 02:15 PM</p>
+</div>
+</div>
+<span class="status-badge delivered">Delivered</span>
+</div>
+<div class="flex justify-between items-center pt-3 border-t border-slate-50 dark:border-slate-800">
+<div class="text-xs font-600 text-slate-600 dark:text-slate-400">1,500 Liters - AGO</div>
+<div class="text-sm font-800 text-primary">₦1,867,500</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-3">
+<div class="flex gap-3">
+<div class="w-10 h-10 rounded-xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center">
+<span class="material-icons text-slate-400">inventory_2</span>
+</div>
+<div>
+<h4 class="text-sm font-700">ORD-782881</h4>
+<p class="text-[11px] text-slate-500">Oct 20, 2023 • 09:45 AM</p>
+</div>
+</div>
+<span class="status-badge delivered">Delivered</span>
+</div>
+<div class="flex justify-between items-center pt-3 border-t border-slate-50 dark:border-slate-800">
+<div class="text-xs font-600 text-slate-600 dark:text-slate-400">2,000 Liters - AGO</div>
+<div class="text-sm font-800 text-primary">₦2,490,000</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-white/90 dark:bg-slate-950/90 bottom-nav-blur border-t border-slate-100 dark:border-slate-800 px-6 py-4">
+<div class="max-w-md mx-auto flex justify-between items-center">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-icons">grid_view</span>
+<span class="text-[10px] font-bold">DASHBOARD</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-icons">storefront</span>
+<span class="text-[10px] font-bold">MARKET</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-icons">local_mall</span>
+<span class="text-[10px] font-bold">ORDERS</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-icons">account_balance_wallet</span>
+<span class="text-[10px] font-bold">WALLET</span>
+</a>
+</div>
+</nav>
+
+</body></html>

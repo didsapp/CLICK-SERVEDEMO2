@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Buyer Settings &amp; Profile | Skywhale</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#137fec",
+                "background-light": "#f6f7f8",
+                "background-dark": "#101922",
+              },
+              fontFamily: {
+                "display": ["Manrope"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab {
+            border-bottom: 3px solid #137fec;
+            color: #137fec;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#0d141b] transition-colors duration-300">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 border-r border-slate-200 bg-white dark:bg-background-dark dark:border-slate-800 flex flex-col">
+<div class="p-6 flex items-center gap-3">
+<div class="bg-primary rounded-lg p-1.5 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-2xl">local_shipping</span>
+</div>
+<div>
+<h1 class="text-xl font-extrabold tracking-tight text-[#0d141b] dark:text-white leading-none">Skywhale</h1>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mt-1">Diesel Logistics</p>
+</div>
+</div>
+<nav class="flex-1 px-4 py-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-semibold">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">storefront</span>
+<span class="text-sm font-semibold">Marketplace</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">package_2</span>
+<span class="text-sm font-semibold">My Orders</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="text-sm font-semibold">Wallet &amp; Payments</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">credit_score</span>
+<span class="text-sm font-semibold">Credit Application</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">location_on</span>
+<span class="text-sm font-semibold">Tracking</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 bg-primary/10 text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined fill-current">settings</span>
+<span class="text-sm font-bold">Settings</span>
+</a>
+</nav>
+<div class="p-4 mt-auto">
+<button class="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold py-3 px-4 rounded-lg transition-all shadow-sm">
+<span class="material-symbols-outlined text-sm">add_circle</span>
+<span class="text-sm">Request Diesel</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-y-auto">
+<!-- Header -->
+<header class="h-16 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark flex items-center justify-between px-8 sticky top-0 z-10">
+<div class="flex items-center gap-2">
+<h2 class="text-lg font-bold text-slate-800 dark:text-white">Settings</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 border-2 border-white dark:border-background-dark rounded-full"></span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+<div class="flex items-center gap-3 border-l border-slate-200 dark:border-slate-800 pl-6">
+<div class="text-right">
+<p class="text-sm font-bold text-slate-800 dark:text-white">Akinyemi Balogun</p>
+<p class="text-[10px] text-slate-500 font-medium">Household Buyer</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-slate-200 bg-cover bg-center ring-2 ring-primary/20" data-alt="User profile avatar with professional look" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCt-eYUKlxG-y6AtOkRlwcmsSNK5z3XKLu2H8FjNRhsh1fRa2qVnp8qCiFqm75wjhb-Etcn5dypDZAs6H2NwP_MtHkUbdCnjU3eCoPfLpLwuz0CEvTvgN2jBdjRv_vpQzQq_f1iAWBBfaj_nME8piuR1vCrCAvdnhbQqyjYZ7S_gNilMmVRcjU86bkFdaj5kp4SGfbowc7fDMPiHqfkMG4iEwor82CJNXtd4Sf1Gdm_uXXnxqK6xbxh7g7NAU7H93wtyNQEW02E0BI');"></div>
+</div>
+</div>
+</header>
+<!-- Tabs Section -->
+<div class="bg-white dark:bg-background-dark border-b border-slate-200 dark:border-slate-800 px-8">
+<div class="flex gap-8">
+<a class="py-4 text-sm font-bold active-tab border-b-2" href="#">Profile Information</a>
+<a class="py-4 text-sm font-semibold text-slate-500 hover:text-primary transition-colors" href="#">Security</a>
+<a class="py-4 text-sm font-semibold text-slate-500 hover:text-primary transition-colors" href="#">Notifications</a>
+<a class="py-4 text-sm font-semibold text-slate-500 hover:text-primary transition-colors" href="#">Preferences</a>
+</div>
+</div>
+<!-- Content Area -->
+<div class="p-8 max-w-5xl mx-auto w-full">
+<!-- Profile Section -->
+<section class="space-y-6">
+<div class="flex justify-between items-end">
+<div>
+<h3 class="text-2xl font-extrabold text-slate-900 dark:text-white">Profile Information</h3>
+<p class="text-slate-500 text-sm mt-1">Manage your account's primary identification and delivery details.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white dark:bg-background-dark p-8 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<!-- Name -->
+<div class="space-y-2">
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300">Full Name</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">person</span>
+<input class="w-full pl-11 pr-4 py-3 border border-slate-200 dark:border-slate-700 dark:bg-slate-800/50 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none" type="text" value="Akinyemi Balogun"/>
+</div>
+</div>
+<!-- Email -->
+<div class="space-y-2">
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300 flex justify-between">
+                                Email Address
+                                <span class="text-[10px] text-green-600 flex items-center gap-1 uppercase tracking-wider bg-green-50 dark:bg-green-900/20 px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[10px]">verified</span> Verified
+                                </span>
+</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">mail</span>
+<input class="w-full pl-11 pr-4 py-3 border border-slate-200 dark:border-slate-700 dark:bg-slate-800/50 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none" type="email" value="akinyemi.b@example.ng"/>
+</div>
+</div>
+<!-- Phone -->
+<div class="space-y-2">
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300">Phone Number</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">call</span>
+<input class="w-full pl-11 pr-4 py-3 border border-slate-200 dark:border-slate-700 dark:bg-slate-800/50 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none" type="tel" value="+234 802 345 6789"/>
+</div>
+</div>
+<!-- Delivery Address -->
+<div class="space-y-2 md:col-span-2">
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300">Primary Delivery Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-4 text-slate-400 text-xl">location_on</span>
+<textarea class="w-full pl-11 pr-4 py-3 border border-slate-200 dark:border-slate-700 dark:bg-slate-800/50 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none resize-none" rows="3">12, Adeola Odeku Street, Victoria Island, Lagos State, Nigeria</textarea>
+</div>
+<p class="text-[11px] text-slate-400 italic mt-1">Delivery address must be accessible for large diesel tankers.</p>
+</div>
+<div class="md:col-span-2 flex justify-end pt-4">
+<button class="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-lg transition-all shadow-md flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">save</span>
+                                Update Profile
+                            </button>
+</div>
+</div>
+<!-- Security Preview -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-white dark:bg-background-dark p-6 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">security</span>
+</div>
+<div>
+<h4 class="font-bold text-slate-800 dark:text-white">2-Factor Authentication</h4>
+<p class="text-xs text-slate-500">Add an extra layer of security</p>
+</div>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</div>
+</div>
+<div class="bg-white dark:bg-background-dark p-6 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">key</span>
+</div>
+<div>
+<h4 class="font-bold text-slate-800 dark:text-white">Password Management</h4>
+<p class="text-xs text-slate-500">Last updated 3 months ago</p>
+</div>
+</div>
+<button class="text-primary text-sm font-bold hover:underline">Change</button>
+</div>
+</div>
+<!-- Notifications Control Preview -->
+<div class="bg-white dark:bg-background-dark p-8 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<h4 class="text-lg font-extrabold text-slate-900 dark:text-white mb-6">Recent Notification Preferences</h4>
+<div class="space-y-4">
+<div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
+<div>
+<p class="font-bold text-slate-800 dark:text-slate-200">Order Status Updates</p>
+<p class="text-xs text-slate-500">Get notified when diesel is out for delivery</p>
+</div>
+<div class="flex gap-4">
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="w-4 h-4 text-primary rounded border-slate-300 focus:ring-primary" type="checkbox"/>
+<span class="text-xs font-semibold text-slate-600">Email</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="w-4 h-4 text-primary rounded border-slate-300 focus:ring-primary" type="checkbox"/>
+<span class="text-xs font-semibold text-slate-600">SMS</span>
+</label>
+</div>
+</div>
+<div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
+<div>
+<p class="font-bold text-slate-800 dark:text-slate-200">Credit Repayments</p>
+<p class="text-xs text-slate-500">Reminders about upcoming credit installments</p>
+</div>
+<div class="flex gap-4">
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="w-4 h-4 text-primary rounded border-slate-300 focus:ring-primary" type="checkbox"/>
+<span class="text-xs font-semibold text-slate-600">Email</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="w-4 h-4 text-primary rounded border-slate-300 focus:ring-primary" type="checkbox"/>
+<span class="text-xs font-semibold text-slate-600">SMS</span>
+</label>
+</div>
+</div>
+<a class="text-primary text-sm font-bold inline-flex items-center gap-1 group" href="#">
+                                View all notification settings 
+                                <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+</body></html>

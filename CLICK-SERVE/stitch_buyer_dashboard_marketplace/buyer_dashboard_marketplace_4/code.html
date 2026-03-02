@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Skywhale Click &amp; Serve - Buyer Dashboard with GPS Tracking</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#137fec",
+                "accent-yellow": "#fbbf24",
+                "background-light": "#f6f7f8",
+                "background-dark": "#101922",
+              },
+              fontFamily: {
+                "display": ["Manrope"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Manrope', sans-serif; }
+        .map-gradient {
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 100%);
+        }
+        .tracking-dot {
+            box-shadow: 0 0 0 4px rgba(19, 127, 236, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display transition-colors duration-200">
+<div class="flex h-screen overflow-hidden">
+<aside class="w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col z-20">
+<div class="p-6 flex items-center gap-3">
+<div class="bg-primary rounded-lg p-2 flex items-center justify-center">
+<span class="material-icons text-white">local_shipping</span>
+</div>
+<span class="text-xl font-bold tracking-tight">Skywhale</span>
+</div>
+<nav class="flex-1 px-4 py-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-all" href="#">
+<span class="material-icons">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-all" href="#">
+<span class="material-icons">receipt_long</span>
+<span>My Orders</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-all" href="#">
+<span class="material-icons">account_balance_wallet</span>
+<span>Wallet</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary/10 text-primary rounded-lg font-semibold" href="#">
+<span class="material-icons">near_me</span>
+<span>Tracking</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<div class="bg-primary/5 rounded-xl p-4">
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-1">Current Balance</p>
+<p class="text-lg font-bold text-slate-900 dark:text-white">₦ 1,450,000</p>
+<button class="w-full mt-3 bg-primary text-white py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-all">Top Up</button>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col overflow-hidden">
+<header class="h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 z-10 shrink-0">
+<div class="flex items-center gap-2 text-sm">
+<span class="text-slate-400">Dashboard</span>
+<span class="material-icons text-xs text-slate-400">chevron_right</span>
+<span class="font-semibold">Live Tracking</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative w-72">
+<span class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-transparent focus:ring-primary focus:border-primary rounded-full text-sm" placeholder="Search orders..." type="text"/>
+</div>
+<button class="relative p-2 text-slate-500 dark:text-slate-400">
+<span class="material-icons">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-900"></span>
+</button>
+<div class="flex items-center gap-3 pl-4 border-l border-slate-200 dark:border-slate-800">
+<div class="text-right">
+<p class="text-sm font-bold leading-none">Chijioke Obi</p>
+<p class="text-[10px] text-slate-500 font-medium mt-1 uppercase">Industrial Buyer</p>
+</div>
+<img alt="Profile" class="w-9 h-9 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDawwzXLe9fBE5zaG_CIk7KKCobGyt8iayKY1HIkAhao8janYL6s8--BSLw08SIdcwCEbq6u-gl61XXXcrLFjUka_zKN3qwCy8I5xH9xUz35dW0wvTKmZHifbyb-TOGwW94KHPXvzbK3kWPte6QXS9eg3pXU6SCw1vjlUbJ4RAI2z1WNV8HnHFfS4goz9n7qwcqQFVlg11eFLMOIGZAjeKKY3MVyHEXVRqQ7vl119fLPyziQdABbWn9Hqnq0vmPWdwo7XqSNEj9DB8"/>
+</div>
+</div>
+</header>
+<div class="flex-1 flex overflow-hidden">
+<div class="flex-1 relative bg-slate-200">
+<img alt="Lagos City Map" class="w-full h-full object-cover grayscale-[0.2] contrast-[1.1]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMBaP5BtvzbpvmtLHEvk3iGtj0wahm_yqnBbOZBJ07mEztGe5lHsB29I2KY7OJLstuB0f3sIyNCF2TWVAeFra1LEJhPZiEk7btjjXoN2uCAR4xiNTPO8ATCVevLOZVozyEO9SUCMoVDhYUyqhh9KkZZW17tXBxblWgTKyVXP5vxr4B0C-ELQFkWtAgFpA6bQcKSzqvvdhNz00gEB7dsjf6SkfwP13AqH159A5uBNgKcdpH4Wo_ZrToPLN0uGSOfj_XLf4XqBiYsdI"/>
+<svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 800 600">
+<path d="M 100 500 Q 300 450 400 300 T 700 100" fill="none" opacity="0.6" stroke="#137fec" stroke-dasharray="10 15" stroke-linecap="round" stroke-width="6"></path>
+<path d="M 100 500 Q 300 450 400 300" fill="none" stroke="#fbbf24" stroke-linecap="round" stroke-width="6"></path>
+<circle cx="100" cy="500" fill="#137fec" r="8"></circle>
+</svg>
+<div class="absolute" style="left: 48%; top: 48%;">
+<div class="relative">
+<div class="bg-primary p-2 rounded-lg shadow-xl tracking-dot border-2 border-white">
+<span class="material-icons text-white text-2xl">local_shipping</span>
+</div>
+<div class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-primary"></div>
+</div>
+</div>
+<div class="absolute" style="left: 85%; top: 15%;">
+<div class="bg-red-500 p-2 rounded-full shadow-lg border-2 border-white">
+<span class="material-icons text-white text-xl">location_on</span>
+</div>
+</div>
+<div class="absolute top-6 left-6 w-80">
+<div class="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="p-1 bg-primary"></div>
+<div class="p-5 space-y-4">
+<div class="flex items-center justify-between">
+<span class="text-[10px] font-black uppercase tracking-widest text-primary">Live Status</span>
+<span class="flex items-center gap-1.5 px-2.5 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full text-[10px] font-bold">
+<span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                                    IN TRANSIT
+                                </span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<p class="text-[10px] text-slate-500 font-bold uppercase mb-0.5">Driver</p>
+<p class="text-sm font-bold text-slate-900 dark:text-white">Adebayo</p>
+</div>
+<div>
+<p class="text-[10px] text-slate-500 font-bold uppercase mb-0.5">Plate Number</p>
+<p class="text-sm font-bold text-slate-900 dark:text-white">ABC-123-XY</p>
+</div>
+</div>
+<div class="pt-4 border-t border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<div class="bg-accent-yellow/20 p-2 rounded-lg">
+<span class="material-icons text-accent-yellow">schedule</span>
+</div>
+<div>
+<p class="text-[10px] text-slate-500 font-bold uppercase mb-0.5">Estimated Arrival</p>
+<p class="text-lg font-black text-slate-900 dark:text-white">15 mins</p>
+</div>
+</div>
+</div>
+<button class="w-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 py-3 rounded-xl text-xs font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-all">
+<span class="material-icons text-sm">phone</span>
+                                Contact Driver
+                            </button>
+</div>
+</div>
+</div>
+<div class="absolute bottom-8 right-8 flex flex-col gap-2">
+<button class="w-10 h-10 bg-white dark:bg-slate-900 shadow-lg rounded-lg flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-slate-50">
+<span class="material-icons">add</span>
+</button>
+<button class="w-10 h-10 bg-white dark:bg-slate-900 shadow-lg rounded-lg flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-slate-50">
+<span class="material-icons">remove</span>
+</button>
+<button class="w-10 h-10 bg-primary shadow-lg rounded-lg flex items-center justify-center text-white hover:bg-primary/90">
+<span class="material-icons text-sm">my_location</span>
+</button>
+</div>
+</div>
+<div class="w-[420px] border-l border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col overflow-y-auto">
+<div class="p-6 space-y-6">
+<div>
+<h2 class="text-xl font-extrabold tracking-tight">Active Delivery</h2>
+<p class="text-sm text-slate-500">Order Ref: SW-ORD-0024921</p>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 border border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 bg-white dark:bg-slate-800 rounded-xl flex items-center justify-center border border-slate-200 dark:border-slate-700">
+<span class="material-icons text-primary">ev_station</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white">Total Nigeria PLC</h3>
+<p class="text-xs text-slate-500">Apapa Depot Terminal</p>
+</div>
+</div>
+<div class="flex items-center justify-between text-xs font-medium text-slate-500 bg-white dark:bg-slate-800 p-3 rounded-lg border border-slate-100 dark:border-slate-700">
+<span class="flex items-center gap-1"><span class="material-icons text-[14px]">science</span> 845 kg/m³</span>
+<span class="flex items-center gap-1"><span class="material-icons text-[14px]">straighten</span> 12.4 km</span>
+<span class="flex items-center gap-1"><span class="material-icons text-[14px]">opacity</span> 10,000L</span>
+</div>
+</div>
+<div class="space-y-4">
+<h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest">Order Summary</h3>
+<div class="space-y-3">
+<div class="flex justify-between items-center text-sm">
+<span class="text-slate-500">Diesel Cost</span>
+<span class="font-semibold">₦11,500,000.00</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-slate-500">Logistics Fee (2%)</span>
+<span class="font-semibold text-primary">₦230,000.00</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-slate-500">Delivery Cost</span>
+<span class="font-semibold">₦85,000.00</span>
+</div>
+<div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex justify-between items-end">
+<span class="text-sm font-bold text-slate-500">Total Paid</span>
+<span class="text-xl font-black text-slate-900 dark:text-white">₦11,815,000.00</span>
+</div>
+</div>
+</div>
+<div class="pt-6 border-t border-slate-100 dark:border-slate-800">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-sm font-bold">Recommended Suppliers</h3>
+<button class="text-xs text-primary font-bold hover:underline">View All</button>
+</div>
+<div class="space-y-3">
+<div class="p-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-primary transition-colors cursor-pointer group">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-sm font-bold group-hover:text-primary transition-colors">Ardova Energy</p>
+<p class="text-[10px] text-slate-500">ETA: 3 - 4 Hours</p>
+</div>
+<p class="text-sm font-black">₦1,142/L</p>
+</div>
+</div>
+<div class="p-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-primary transition-colors cursor-pointer group">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-sm font-bold group-hover:text-primary transition-colors">Rainoil Ltd</p>
+<p class="text-[10px] text-slate-500">ETA: 4 - 6 Hours</p>
+</div>
+<p class="text-sm font-black">₦1,135/L</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

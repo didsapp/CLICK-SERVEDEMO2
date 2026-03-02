@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact Us | Skywhale Click &amp; Serve</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#137fec",
+                "accent": "#f9bf07",
+                "background-light": "#f6f7f8",
+                "background-dark": "#101922",
+              },
+              fontFamily: {
+                "display": ["Manrope"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Manrope', sans-serif; }
+        .contact-hero {
+            background: linear-gradient(rgba(16, 25, 34, 0.85), rgba(16, 25, 34, 0.85)), url('https://images.unsplash.com/photo-1534536281715-e28d76689b4d?auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display transition-colors duration-300">
+<nav class="sticky top-0 z-50 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-primary/10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-20">
+<div class="flex items-center gap-2">
+<div class="bg-primary p-1.5 rounded-lg">
+<span class="material-icons text-white text-3xl">sailing</span>
+</div>
+<span class="text-2xl font-800 tracking-tight text-primary">SKYWHALE</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-wider" href="#">Home</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-wider" href="#">About Us</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors uppercase tracking-wider" href="#">Marketplace</a>
+<a class="text-sm font-bold text-primary transition-colors uppercase tracking-wider border-b-2 border-primary" href="#">Contact</a>
+<div class="h-6 w-px bg-slate-200 dark:bg-slate-700"></div>
+<button class="bg-primary text-white px-6 py-2.5 rounded-lg font-bold text-sm shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all uppercase tracking-wider">
+                    Get Started
+                </button>
+</div>
+<div class="md:hidden flex items-center">
+<span class="material-icons text-primary">menu</span>
+</div>
+</div>
+</div>
+</nav>
+<header class="contact-hero py-24 text-center">
+<div class="max-w-4xl mx-auto px-4">
+<h1 class="text-4xl md:text-6xl font-800 text-white mb-6">How can we help?</h1>
+<p class="text-lg text-slate-300 max-w-2xl mx-auto">Get in touch with our team for support, partnership inquiries, or to learn more about our diesel logistics solutions.</p>
+</div>
+</header>
+<section class="max-w-7xl mx-auto px-4 -mt-16 mb-20">
+<div class="grid md:grid-cols-3 gap-6">
+<div class="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-xl border border-primary/5 text-center group">
+<div class="w-16 h-16 bg-green-500/10 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-green-600 group-hover:text-white transition-all">
+<span class="material-icons text-3xl">chat</span>
+</div>
+<h3 class="text-xl font-800 mb-2">WhatsApp Support</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-6">Chat with our support team in real-time for quick assistance.</p>
+<a class="inline-flex items-center gap-2 text-green-600 font-bold hover:underline" href="#">
+                Message Us <span class="material-icons text-sm">open_in_new</span>
+</a>
+</div>
+<div class="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-xl border border-primary/5 text-center group">
+<div class="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:text-white transition-all">
+<span class="material-icons text-3xl">email</span>
+</div>
+<h3 class="text-xl font-800 mb-2">Email Us</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-6">Send us a detailed message and we'll reply within 2 hours.</p>
+<a class="inline-flex items-center gap-2 text-primary font-bold hover:underline" href="mailto:support@skywhale.co">
+                support@skywhale.co
+            </a>
+</div>
+<div class="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-xl border border-primary/5 text-center group">
+<div class="w-16 h-16 bg-accent/10 text-accent rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-accent group-hover:text-slate-900 transition-all">
+<span class="material-icons text-3xl">help_outline</span>
+</div>
+<h3 class="text-xl font-800 mb-2">Help Center</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-6">Browse our detailed guides and common questions.</p>
+<a class="inline-flex items-center gap-2 text-accent font-bold hover:underline" href="#">
+                Visit Knowledge Base
+            </a>
+</div>
+</div>
+</section>
+<section class="py-12 bg-white dark:bg-background-dark">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid lg:grid-cols-2 gap-20">
+<div>
+<h2 class="text-3xl font-800 mb-6">Send us a Message</h2>
+<p class="text-slate-500 dark:text-slate-400 mb-10">Whether you're a buyer looking for fuel or a supplier interested in joining our network, we're here to help you scale.</p>
+<form class="space-y-6">
+<div class="grid md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300">Full Name</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary px-4 py-3" placeholder="John Doe" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300">Email Address</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary px-4 py-3" placeholder="john@company.com" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300">Subject</label>
+<select class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary px-4 py-3">
+<option>General Inquiry</option>
+<option>Technical Support</option>
+<option>Become a Supplier</option>
+<option>Corporate Fleet Solutions</option>
+<option>Billing &amp; Invoices</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300">Message</label>
+<textarea class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary px-4 py-3" placeholder="How can we help you today?" rows="6"></textarea>
+</div>
+<button class="w-full bg-primary text-white py-4 rounded-xl font-800 text-lg hover:bg-primary/90 shadow-xl shadow-primary/20 transition-all">
+                        Send Message
+                    </button>
+</form>
+</div>
+<div>
+<h2 class="text-3xl font-800 mb-12">Frequently Asked Questions</h2>
+<div class="space-y-4">
+<div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+<button class="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<span class="font-bold">What is the minimum order quantity?</span>
+<span class="material-icons text-primary">expand_more</span>
+</button>
+<div class="px-6 pb-6 text-slate-500 dark:text-slate-400 text-sm">
+                            Our standard minimum order is 500 liters for doorstep delivery. However, for specialized industrial needs, we can accommodate larger fleet requirements.
+                        </div>
+</div>
+<div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+<button class="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<span class="font-bold">How do you verify diesel quality?</span>
+<span class="material-icons text-primary">expand_more</span>
+</button>
+<div class="px-6 pb-6 text-slate-500 dark:text-slate-400 text-sm">
+                            We use a multi-step verification process including terminal pickup tracking, random spot checks, and supplier ISO certification audits to ensure zero adulteration.
+                        </div>
+</div>
+<div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+<button class="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<span class="font-bold">What cities do you operate in?</span>
+<span class="material-icons text-primary">expand_more</span>
+</button>
+<div class="px-6 pb-6 text-slate-500 dark:text-slate-400 text-sm">
+                            Currently, Skywhale Click &amp; Serve is active in Lagos (Mainland &amp; Island), Abuja FCT, and Port Harcourt. We are expanding to Kano and Ibadan soon.
+                        </div>
+</div>
+<div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+<button class="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<span class="font-bold">How fast is delivery?</span>
+<span class="material-icons text-primary">expand_more</span>
+</button>
+<div class="px-6 pb-6 text-slate-500 dark:text-slate-400 text-sm">
+                            Our average match time is 15 minutes, and most deliveries are completed within 2-4 hours depending on the traffic and location.
+                        </div>
+</div>
+</div>
+<div class="mt-12 bg-primary/5 p-8 rounded-2xl border border-primary/10">
+<h4 class="font-800 text-lg mb-4">Corporate Office</h4>
+<ul class="space-y-4 text-slate-600 dark:text-slate-400">
+<li class="flex items-start gap-3">
+<span class="material-icons text-primary">location_on</span>
+<span>12B Admiralty Way, Lekki Phase 1, Lagos, Nigeria</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-icons text-primary">schedule</span>
+<span>Mon - Fri: 8am - 6pm<br/>Sat: 9am - 2pm</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-slate-900 text-white pt-20 pb-10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid md:grid-cols-4 gap-12 mb-16">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-2 mb-8">
+<div class="bg-primary p-1.5 rounded-lg">
+<span class="material-icons text-white text-2xl">sailing</span>
+</div>
+<span class="text-xl font-800 tracking-tight">SKYWHALE</span>
+</div>
+<p class="text-slate-400 text-sm leading-relaxed mb-6">
+                    Skywhale Click &amp; Serve is Nigeria's leading digital marketplace for bulk diesel procurement and logistics.
+                </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<i class="material-icons text-xl">facebook</i>
+</a>
+<a class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<i class="material-icons text-xl">alternate_email</i>
+</a>
+</div>
+</div>
+<div>
+<h5 class="font-800 text-sm uppercase tracking-widest mb-6 text-primary">Marketplace</h5>
+<ul class="space-y-4 text-slate-400 text-sm font-medium">
+<li><a class="hover:text-white transition-colors" href="#">Diesel Prices</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Supplier Portal</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Buyer Sign Up</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Fleet Solutions</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-800 text-sm uppercase tracking-widest mb-6 text-primary">Resources</h5>
+<ul class="space-y-4 text-slate-400 text-sm font-medium">
+<li><a class="hover:text-white transition-colors" href="#">Help Center</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Fuel Quality Tips</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Safety Protocols</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-800 text-sm uppercase tracking-widest mb-6 text-primary">Contact</h5>
+<ul class="space-y-4 text-slate-400 text-sm font-medium">
+<li class="flex items-start gap-2">
+<span class="material-icons text-xs mt-1">location_on</span>
+                        Lagos, Nigeria
+                    </li>
+<li class="flex items-start gap-2">
+<span class="material-icons text-xs mt-1">mail</span>
+                        hello@skywhale.co
+                    </li>
+<li class="flex items-start gap-2">
+<span class="material-icons text-xs mt-1">call</span>
+                        +234 800 123 4567
+                    </li>
+</ul>
+</div>
+</div>
+<div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-slate-500 text-xs">© 2024 Skywhale Click &amp; Serve. All rights reserved.</p>
+<div class="flex gap-6 text-xs text-slate-500">
+<a class="hover:text-white" href="#">Terms of Service</a>
+<a class="hover:text-white" href="#">Cookies</a>
+<a class="hover:text-white" href="#">Compliance</a>
+</div>
+</div>
+</div>
+</footer>
+
+</body></html>
