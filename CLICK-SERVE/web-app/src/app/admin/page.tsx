@@ -1,27 +1,35 @@
 import React from "react"
+import dynamic from "next/dynamic"
 import Sidebar from "@/components/admin/Sidebar"
 import Header from "@/components/admin/Header"
 import { auth } from "@/auth"
 import prisma from "@/lib/db"
 import { redirect } from "next/navigation"
 import KpiCards from "@/components/admin/KpiCards"
-import AnalyticsSection from "@/components/admin/AnalyticsSection"
-import OperationSection from "@/components/admin/OperationSection"
-import PerformanceSection from "@/components/admin/PerformanceSection"
-import InsightsTab from "@/components/admin/tabs/InsightsTab"
-import NetworksTab from "@/components/admin/tabs/NetworksTab"
-import SignUpTab from "@/components/admin/tabs/SignUpTab"
-import ApprovalTab from "@/components/admin/tabs/ApprovalTab"
-import BusinessTab from "@/components/admin/tabs/BusinessTab"
-import EWalletTab from "@/components/admin/tabs/EWalletTab"
-import PayoutTab from "@/components/admin/tabs/PayoutTab"
-import ProfileTab from "@/components/admin/tabs/ProfileTab"
-import PackageTab from "@/components/admin/tabs/PackageTab"
-import ReportsTab from "@/components/admin/tabs/ReportsTab"
-import ToolsTab from "@/components/admin/tabs/ToolsTab"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Facebook, Twitter, Linkedin, Info } from "lucide-react"
+
+// Dynamic imports — only load the active tab's JS bundle
+const AnalyticsSection = dynamic(() => import("@/components/admin/AnalyticsSection"))
+const OperationSection = dynamic(() => import("@/components/admin/OperationSection"))
+const PerformanceSection = dynamic(() => import("@/components/admin/PerformanceSection"))
+const InsightsTab = dynamic(() => import("@/components/admin/tabs/InsightsTab"))
+const NetworksTab = dynamic(() => import("@/components/admin/tabs/NetworksTab"))
+const SignUpTab = dynamic(() => import("@/components/admin/tabs/SignUpTab"))
+const ApprovalTab = dynamic(() => import("@/components/admin/tabs/ApprovalTab"))
+const BusinessTab = dynamic(() => import("@/components/admin/tabs/BusinessTab"))
+const EWalletTab = dynamic(() => import("@/components/admin/tabs/EWalletTab"))
+const PayoutTab = dynamic(() => import("@/components/admin/tabs/PayoutTab"))
+const ProfileTab = dynamic(() => import("@/components/admin/tabs/ProfileTab"))
+const PackageTab = dynamic(() => import("@/components/admin/tabs/PackageTab"))
+const ReportsTab = dynamic(() => import("@/components/admin/tabs/ReportsTab"))
+const ToolsTab = dynamic(() => import("@/components/admin/tabs/ToolsTab"))
+
+// Helper to serialize Prisma dates for client components
+function serialize<T>(data: T): T {
+    return JSON.parse(JSON.stringify(data))
+}
 
 export default async function AdminDashboard({
     searchParams
@@ -37,9 +45,34 @@ export default async function AdminDashboard({
     const activeTab = (searchParams.tab as string) || "Dashboard"
     const searchQuery = (searchParams.query as string) || ""
 
-    // Fetch all data needed for every tab
-    const [users, allOrders, stocks, transactions, totalRevenue] = await Promise.all([
-        prisma.user.findMany({
+    // =======================
+    // CONDITIONAL DATA FETCHING
+    // Only fetch what the active tab needs
+    // =======================
+
+    // Dashboard tab only needs aggregate counts
+    let totalRevenue = 0
+    let totalUsers = 0
+    let totalOrders = 0
+    if (activeTab === "Dashboard") {
+        const [userCount, orderCount, revenueAgg] = await Promise.all([
+            prisma.user.count(),
+            prisma.order.count(),
+            prisma.order.aggregate({
+                where: { status: "DELIVERED" },
+                _sum: { price: true }
+            })
+        ])
+        totalUsers = userCount
+        totalOrders = orderCount
+        totalRevenue = Number(revenueAgg._sum.price || 0)
+    }
+
+    // Users — needed by: Insights, Networks, SignUp, Business, Profile, Reports, Tools
+    const tabsNeedingUsers = ["Insights", "Networks", "SignUp", "Business", "Profile", "Reports", "Tools"]
+    let serializedUsers: any[] = []
+    if (tabsNeedingUsers.includes(activeTab)) {
+        const users = await prisma.user.findMany({
             orderBy: { createdAt: "desc" },
             select: {
                 id: true,
@@ -49,35 +82,44 @@ export default async function AdminDashboard({
                 createdAt: true,
                 _count: { select: { orders: true, supplierOrders: true, stocks: true } }
             }
-        }),
-        prisma.order.findMany({
+        })
+        serializedUsers = serialize(users)
+    }
+
+    // Orders — needed by: Insights, Approval, Business, Payout, Reports, Tools
+    const tabsNeedingOrders = ["Insights", "Approval", "Business", "Payout", "Reports", "Tools"]
+    let serializedOrders: any[] = []
+    if (tabsNeedingOrders.includes(activeTab)) {
+        const orders = await prisma.order.findMany({
             orderBy: { createdAt: "desc" },
             include: {
                 user: { select: { name: true, email: true } },
                 supplier: { select: { name: true, email: true } }
             }
-        }),
-        prisma.stock.findMany({
+        })
+        serializedOrders = serialize(orders)
+    }
+
+    // Stocks — needed by: Package, Reports, Tools
+    const tabsNeedingStocks = ["Package", "Reports", "Tools"]
+    let serializedStocks: any[] = []
+    if (tabsNeedingStocks.includes(activeTab)) {
+        const stocks = await prisma.stock.findMany({
             include: { user: { select: { name: true, email: true } } }
-        }),
-        prisma.transaction.findMany({
+        })
+        serializedStocks = serialize(stocks)
+    }
+
+    // Transactions — needed by: Insights, E-Wallet, Payout, Reports, Tools
+    const tabsNeedingTransactions = ["Insights", "E-Wallet", "Payout", "Reports", "Tools"]
+    let serializedTransactions: any[] = []
+    if (tabsNeedingTransactions.includes(activeTab)) {
+        const transactions = await prisma.transaction.findMany({
             orderBy: { date: "desc" },
             include: { user: { select: { name: true, email: true } } }
-        }),
-        prisma.order.aggregate({
-            where: { status: "DELIVERED" },
-            _sum: { price: true }
         })
-    ])
-
-    const totalUsers = users.length
-    const totalOrders = allOrders.length
-
-    // Serialize dates for client components
-    const serializedUsers = JSON.parse(JSON.stringify(users))
-    const serializedOrders = JSON.parse(JSON.stringify(allOrders))
-    const serializedStocks = JSON.parse(JSON.stringify(stocks))
-    const serializedTransactions = JSON.parse(JSON.stringify(transactions))
+        serializedTransactions = serialize(transactions)
+    }
 
     return (
         <div className="flex bg-[#F8FAFC] min-h-screen font-sans">
@@ -90,7 +132,7 @@ export default async function AdminDashboard({
                     {activeTab === "Dashboard" && (
                         <>
                             <KpiCards
-                                totalRevenue={Number(totalRevenue._sum.price || 0)}
+                                totalRevenue={totalRevenue}
                                 totalUsers={totalUsers}
                                 totalOrders={totalOrders}
                             />

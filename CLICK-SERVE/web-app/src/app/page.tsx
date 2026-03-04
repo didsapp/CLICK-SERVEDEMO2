@@ -51,9 +51,20 @@ export default function HomePage() {
       <Navbar />
 
       <main className="flex-grow">
-        {/* Hero Section with Premium Background */}
+        {/* Hero Section with Premium Video Background */}
         <section className="relative min-h-[90vh] flex items-center overflow-hidden px-8">
-          <BackgroundAnimation />
+          <div className="absolute inset-0 z-0">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="object-cover w-full h-full brightness-[0.4]"
+            >
+              <source src="/hero-bg.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
 
           <div className="container mx-auto relative z-10 w-full">
             <div className="max-w-4xl">

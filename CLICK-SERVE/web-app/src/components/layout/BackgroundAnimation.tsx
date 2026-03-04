@@ -2,6 +2,16 @@
 
 import React, { useEffect, useRef } from "react"
 
+interface Particle {
+    x: number
+    y: number
+    size: number
+    speedX: number
+    speedY: number
+    color: string
+    opacity: number
+}
+
 export const BackgroundAnimation = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -9,84 +19,97 @@ export const BackgroundAnimation = () => {
         const canvas = canvasRef.current
         if (!canvas) return
 
-        const ctx = canvas.getContext("2d")
+        const ctx = canvas.getContext("2d", { alpha: false })
         if (!ctx) return
 
         let animationFrameId: number
-        let width = (canvas.width = window.innerWidth)
-        let height = (canvas.height = window.innerHeight)
+        const dpr = Math.min(window.devicePixelRatio || 1, 2)
+        let width = window.innerWidth
+        let height = window.innerHeight
 
+        // Set canvas size accounting for device pixel ratio
+        canvas.width = width * dpr
+        canvas.height = height * dpr
+        canvas.style.width = `${width}px`
+        canvas.style.height = `${height}px`
+        ctx.scale(dpr, dpr)
+
+        // Reduce particles on mobile for better performance
+        const isMobile = width < 768
+        const particleCount = isMobile ? 20 : 40
         const particles: Particle[] = []
-        const particleCount = 40
 
-        class Particle {
-            x: number
-            y: number
-            size: number
-            speedX: number
-            speedY: number
-            color: string
-            opacity: number
+        // Pre-create the static background gradient (never changes)
+        let bgGradient: CanvasGradient
 
-            constructor() {
-                this.x = Math.random() * width
-                this.y = Math.random() * height
-                this.size = Math.random() * 2 + 1
-                this.speedX = Math.random() * 0.5 - 0.25
-                this.speedY = Math.random() * 0.5 - 0.25
-                this.opacity = Math.random() * 0.5 + 0.1
-                this.color = `rgba(250, 204, 21, ${this.opacity})` // SkyWhale Yellow
-            }
-
-            update() {
-                this.x += this.speedX
-                this.y += this.speedY
-
-                if (this.x > width) this.x = 0
-                else if (this.x < 0) this.x = width
-                if (this.y > height) this.y = 0
-                else if (this.y < 0) this.y = height
-            }
-
-            draw() {
-                if (!ctx) return
-                ctx.beginPath()
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
-                ctx.fillStyle = this.color
-                ctx.fill()
-            }
-        }
-
-        const init = () => {
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle())
-            }
-        }
-
-        const animate = () => {
-            ctx.clearRect(0, 0, width, height)
-
-            // Draw gradient background
-            const gradient = ctx.createRadialGradient(
+        const createBgGradient = () => {
+            bgGradient = ctx.createRadialGradient(
                 width / 2, height / 2, 0,
                 width / 2, height / 2, Math.max(width, height)
             )
-            gradient.addColorStop(0, "#0a192f") // Deep Dark Blue
-            gradient.addColorStop(1, "#020617") // Almost Black
-            ctx.fillStyle = gradient
+            bgGradient.addColorStop(0, "#0a192f")
+            bgGradient.addColorStop(1, "#020617")
+        }
+
+        createBgGradient()
+
+        const createParticle = (): Particle => {
+            const opacity = Math.random() * 0.5 + 0.1
+            return {
+                x: Math.random() * width,
+                y: Math.random() * height,
+                size: Math.random() * 2 + 1,
+                speedX: Math.random() * 0.5 - 0.25,
+                speedY: Math.random() * 0.5 - 0.25,
+                opacity,
+                color: `rgba(250, 204, 21, ${opacity})`,
+            }
+        }
+
+        // Init particles
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(createParticle())
+        }
+
+        // Throttle to ~30fps for ambient animation (saves ~50% GPU)
+        const targetFPS = 30
+        const frameInterval = 1000 / targetFPS
+        let lastFrameTime = 0
+
+        const animate = (timestamp: number) => {
+            animationFrameId = requestAnimationFrame(animate)
+
+            const delta = timestamp - lastFrameTime
+            if (delta < frameInterval) return
+            lastFrameTime = timestamp - (delta % frameInterval)
+
+            // Draw cached background gradient
+            ctx.fillStyle = bgGradient
             ctx.fillRect(0, 0, width, height)
 
             // Draw particles
-            particles.forEach((particle) => {
-                particle.update()
-                particle.draw()
-            })
+            for (let i = 0; i < particles.length; i++) {
+                const p = particles[i]
+                p.x += p.speedX
+                p.y += p.speedY
 
-            // Add floating glass effect zones
+                if (p.x > width) p.x = 0
+                else if (p.x < 0) p.x = width
+                if (p.y > height) p.y = 0
+                else if (p.y < 0) p.y = height
+
+                ctx.beginPath()
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
+                ctx.fillStyle = p.color
+                ctx.fill()
+            }
+
+            // Floating glass effect zones
             ctx.save()
             ctx.globalCompositeOperation = "screen"
-            const time = Date.now() * 0.0005
-            for (let i = 0; i < 3; i++) {
+            const time = timestamp * 0.0005
+            const blobCount = isMobile ? 2 : 3
+            for (let i = 0; i < blobCount; i++) {
                 const x = width * (0.5 + Math.cos(time + i) * 0.3)
                 const y = height * (0.5 + Math.sin(time * 0.8 + i) * 0.3)
                 const radius = Math.min(width, height) * 0.4
@@ -99,21 +122,29 @@ export const BackgroundAnimation = () => {
                 ctx.fill()
             }
             ctx.restore()
-
-            animationFrameId = requestAnimationFrame(animate)
         }
 
+        let resizeTimeout: ReturnType<typeof setTimeout>
         const handleResize = () => {
-            width = canvas.width = window.innerWidth
-            height = canvas.height = window.innerHeight
+            clearTimeout(resizeTimeout)
+            resizeTimeout = setTimeout(() => {
+                width = window.innerWidth
+                height = window.innerHeight
+                canvas.width = width * dpr
+                canvas.height = height * dpr
+                canvas.style.width = `${width}px`
+                canvas.style.height = `${height}px`
+                ctx.scale(dpr, dpr)
+                createBgGradient()
+            }, 150)
         }
 
         window.addEventListener("resize", handleResize)
-        init()
-        animate()
+        animationFrameId = requestAnimationFrame(animate)
 
         return () => {
             cancelAnimationFrame(animationFrameId)
+            clearTimeout(resizeTimeout)
             window.removeEventListener("resize", handleResize)
         }
     }, [])
@@ -122,6 +153,7 @@ export const BackgroundAnimation = () => {
         <canvas
             ref={canvasRef}
             className="fixed inset-0 w-full h-full -z-10 pointer-events-none"
+            style={{ willChange: "contents" }}
         />
     )
 }

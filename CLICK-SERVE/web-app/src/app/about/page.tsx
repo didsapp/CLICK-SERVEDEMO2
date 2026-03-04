@@ -11,6 +11,7 @@ import {
 } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 import Link from "next/link"
 
 export default function AboutPage() {
@@ -31,10 +32,13 @@ export default function AboutPage() {
                 {/* Hero Section with Image Background */}
                 <section className="relative min-h-[60vh] flex items-center justify-center text-center px-8 overflow-hidden">
                     {/* Background Image */}
-                    <div
-                        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat brightness-[0.4]"
-                        style={{ backgroundImage: 'url("/about-banner.png")' }}
-                    />
+                    <div className="absolute inset-0 z-0 brightness-[0.4]">
+                        <img
+                            src="/about-banner.png"
+                            alt="About Banner"
+                            className="object-cover w-full h-full"
+                        />
+                    </div>
 
                     <div className="container mx-auto relative z-10">
                         <h1 className="text-5xl lg:text-7xl font-extrabold mb-6 leading-[0.9] text-white glass-font uppercase">
