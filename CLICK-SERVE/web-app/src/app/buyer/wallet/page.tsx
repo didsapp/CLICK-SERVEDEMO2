@@ -5,6 +5,8 @@ import { Wallet, Banknote, History, ArrowUpRight, ShieldCheck, TrendingUp, Credi
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { AddFundsModal } from "@/components/dashboard/AddFundsModal"
+import { CreditRequestModal } from "@/components/dashboard/CreditRequestModal"
 
 const TRANSACTIONS = [
     { id: "TX-552-XD", type: "Purchase", amount: "-₦6,750,000", date: "Feb 20, 2026", method: "Credit Line", status: "Processed" },
@@ -14,6 +16,9 @@ const TRANSACTIONS = [
 ]
 
 export default function WalletPage() {
+    const [showAddFunds, setShowAddFunds] = React.useState(false)
+    const [showCreditRequest, setShowCreditRequest] = React.useState(false)
+
     return (
         <div className="space-y-8">
             <div>
@@ -31,7 +36,11 @@ export default function WalletPage() {
                     <CardContent className="relative z-10">
                         <p className="text-4xl font-black mb-1">₦4,250,500</p>
                         <p className="text-xs opacity-60 italic font-medium">Secured Liquid Capital</p>
-                        <Button variant="secondary" className="w-full mt-6 h-12 text-primary font-black uppercase group-hover:scale-105 transition-transform">
+                        <Button
+                            variant="secondary"
+                            className="w-full mt-6 h-12 text-primary font-black uppercase group-hover:scale-105 transition-transform"
+                            onClick={() => setShowAddFunds(true)}
+                        >
                             Add Funds <ArrowUpRight className="ml-1 h-4 w-4" />
                         </Button>
                     </CardContent>
@@ -47,7 +56,11 @@ export default function WalletPage() {
                     <CardContent>
                         <p className="text-4xl font-black text-white mb-1">₦10,000,000</p>
                         <p className="text-xs text-primary italic font-bold uppercase tracking-widest">Active • 0% Interest</p>
-                        <Button variant="outline" className="w-full mt-6 h-12 border-white/10 text-white hover:bg-white/5 font-bold italic">
+                        <Button
+                            variant="outline"
+                            className="w-full mt-6 h-12 border-white/10 text-white hover:bg-white/5 font-bold italic"
+                            onClick={() => setShowCreditRequest(true)}
+                        >
                             Request Increase
                         </Button>
                     </CardContent>
@@ -119,6 +132,15 @@ export default function WalletPage() {
                     </div>
                 </CardContent>
             </Card>
+            <AddFundsModal
+                isOpen={showAddFunds}
+                onClose={() => setShowAddFunds(false)}
+            />
+            <CreditRequestModal
+                isOpen={showCreditRequest}
+                onClose={() => setShowCreditRequest(false)}
+                currentLimit="₦10,000,000"
+            />
         </div>
     )
 }

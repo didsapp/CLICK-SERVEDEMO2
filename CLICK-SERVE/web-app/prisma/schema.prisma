@@ -1,48 +1,45 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
-  provider   = "prisma-client-js"
-  engineType = "binary"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {
-  id             String    @id @default(cuid())
+  id             String        @id @default(cuid())
   name           String?
-  email          String?   @unique
+  email          String?       @unique
   password       String?
-  role           String    @default("BUYER") // BUYER, SUPPLIER, ADMIN
+  role           String        @default("BUYER")
   emailVerified  DateTime?
   image          String?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
   accounts       Account[]
+  supplierOrders Order[]       @relation("SupplierOrders")
+  orders         Order[]       @relation("BuyerOrders")
   sessions       Session[]
-  orders         Order[]   @relation("BuyerOrders")
-  supplierOrders Order[]   @relation("SupplierOrders")
   stocks         Stock[]
   transactions   Transaction[]
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
 }
 
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?
-  access_token       String?
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?
-  session_state      String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
@@ -64,38 +61,38 @@ model VerificationToken {
 }
 
 model Order {
-  id          String   @id @default(cuid())
-  userId      String
-  user        User     @relation("BuyerOrders", fields: [userId], references: [id])
-  supplierId  String?
-  supplier    User?    @relation("SupplierOrders", fields: [supplierId], references: [id])
-  product     String
-  quantity    Float
-  price       Float
-  status      String   @default("PENDING") // PENDING, PROCESSING, SHIPPED, DELIVERED, CANCELLED
-  location    String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id         String   @id @default(cuid())
+  userId     String
+  supplierId String?
+  product    String
+  quantity   Float
+  price      Float
+  status     String   @default("PENDING")
+  location   String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  supplier   User?    @relation("SupplierOrders", fields: [supplierId], references: [id])
+  user       User     @relation("BuyerOrders", fields: [userId], references: [id])
 }
 
 model Stock {
-  id        String   @id @default(cuid())
-  userId    String
-  user      User     @relation(fields: [userId], references: [id])
-  product   String
-  quantity  Float
-  unit      String
-  price     Float    @default(1250)
+  id          String   @id @default(cuid())
+  userId      String
+  product     String
+  quantity    Float
+  unit        String
+  price       Float    @default(1250)
   lastUpdated DateTime @default(now())
+  user        User     @relation(fields: [userId], references: [id])
 }
 
 model Transaction {
-  id        String   @id @default(cuid())
-  userId    String
-  user      User     @relation(fields: [userId], references: [id])
-  amount    Float
-  type      String   // CREDIT, DEBIT
-  category  String   // ORDER, WALLET_TOPUP, WITHDRAWAL
-  status    String   @default("COMPLETED")
-  date      DateTime @default(now())
+  id       String   @id @default(cuid())
+  userId   String
+  amount   Float
+  type     String
+  category String
+  status   String   @default("COMPLETED")
+  date     DateTime @default(now())
+  user     User     @relation(fields: [userId], references: [id])
 }

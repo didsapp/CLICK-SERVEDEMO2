@@ -1,9 +1,7 @@
 import { PrismaClient } from "@prisma/client"
-import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3"
 import bcrypt from "bcryptjs"
 
-const adapter = new PrismaBetterSqlite3({ url: 'file:dev.db' })
-const prisma = new PrismaClient({ adapter })
+const prisma = new PrismaClient()
 
 async function main() {
     const hashedPassword = await bcrypt.hash("password123", 10)
@@ -131,7 +129,7 @@ async function main() {
 
 main()
     .catch((e) => {
-        console.error(e)
+        console.error(JSON.stringify(e, null, 2))
         process.exit(1)
     })
     .finally(async () => {
